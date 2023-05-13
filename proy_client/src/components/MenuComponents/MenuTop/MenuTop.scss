@@ -1,0 +1,49 @@
+@import "../../../scss/index.scss";
+
+.menu-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    background-color: black;
+    height: 50px;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    &.menu-top-collapsed{
+        padding: 0;
+    }
+    &__left{
+        display: flex;
+        align-items: center;
+        height: 50px;
+        &__logo{
+            width: 50px;
+            padding: 0 10px;
+        }
+    }
+    .user{
+        align-items: center;
+    }
+    button{
+        margin-left: 5px;
+        cursor: pointer;
+        font-size: 20px;
+        &:hover{
+            color: white;
+        }
+        &:focus,
+        &:active{
+            color:  white;
+        }
+    }
+
+    .ant-btn-link {
+        color: white;
+    }
+    .ant-btn-link:not(:disabled){
+        &:hover {
+            color: white;
+        }
+    }
+}
+

@@ -1,0 +1,10 @@
+$my-font-name: 'BonnetGrotesqueNr';
+$my-font-path: './BonnetGrotesqueNr-Regular.ttf';
+@mixin custom-font() {
+    @font-face {
+        font-family: #{$my-font-name};
+        src: url(#{$my-font-path}) format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+}
