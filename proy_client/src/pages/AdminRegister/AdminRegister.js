@@ -2,7 +2,10 @@ import React from 'react'
 import { LockOutlined} from '@ant-design/icons';
 import { Button, Form, Input} from 'antd';
 import './AdminRegister.scss';
+<<<<<<< HEAD
 import { FirstTop } from "../../components/TopComponents/FirstTop/FirstTop"
+=======
+>>>>>>> f337300 (register admin & change password)
 /* import { useRef } from 'react'; */
 
 const MyFormItemContext = React.createContext([]);
@@ -20,7 +23,11 @@ const MyFormItem = ({ name, ...props }) => {
     return <Form.Item name={concatName} {...props} />;
 };
 
+<<<<<<< HEAD
 export const AdminRegister = () => {
+=======
+const App = () => {
+>>>>>>> f337300 (register admin & change password)
     const onFinish = (value) => {
         console.log(value);
     };
@@ -35,8 +42,11 @@ export const AdminRegister = () => {
     };
  */
     return (
+<<<<<<< HEAD
         <div>
             <FirstTop addtitle="Registro administrador"/>
+=======
+>>>>>>> f337300 (register admin & change password)
         <Form name="form_item_path" layout="vertical" onFinish={onFinish} className='register-admin' >
             <MyFormItemGroup prefix={['user']}>
                 <MyFormItemGroup prefix={['name']}>
@@ -87,7 +97,14 @@ export const AdminRegister = () => {
                 Listo
             </Button>
         </Form>
+<<<<<<< HEAD
         </div>
     );
 };
 
+=======
+    );
+};
+
+export default App;
+>>>>>>> f337300 (register admin & change password)
