@@ -19,7 +19,7 @@ const MyFormItem = ({ name, ...props }) => {
     return <Form.Item name={concatName} {...props} />;
 };
 
-const App = () => {
+export const AdminRegister = () => {
     const onFinish = (value) => {
         console.log(value);
     };
@@ -87,4 +87,3 @@ const App = () => {
     );
 };
 
-export default App;

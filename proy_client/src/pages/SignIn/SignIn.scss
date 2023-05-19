@@ -12,11 +12,6 @@
     align-items: center;
     font-size: 30px;
     font-family: BonnetGrotesqueNr-Regular;
-    /* > * {
-        width: 100%;
-        min-width: 200px;
-        max-width: 400px;
-    } */
 }
 
 .login-form-button{
@@ -27,7 +22,6 @@
     font-family: BonnetGrotesqueNr-Regular;
     border-color: white;
 }
-
 .ant-input-affix-wrapper{
     width: 400px;
     height: 45px;
@@ -38,31 +32,4 @@
 }
 
 
-.Logo{
-    width: 100px;
-    margin-top: 8%;
-    margin-bottom: 0%;
-    margin-inline: 55%;
-    position: center;
-}
-.text-out{
-    color: white;
-    font-size: 100px;
-    font-family: BonnetGrotesqueNr-Regular;
-    text-align: center;
-}
-.Logo-UAM{
-    position: center;
-    width: 135px;
-    margin-top: 7%;
-    margin-bottom: 0%;
-    margin-inline: 20%;
-}
 
-.my-label{
-    color: white;
-    font-size: 50px;
-    font-family: BonnetGrotesqueNr-Regular;
-    flex-basis: 150px; 
-    margin-right: 16px;
-}

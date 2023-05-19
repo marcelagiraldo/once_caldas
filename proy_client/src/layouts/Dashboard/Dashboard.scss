@@ -1,7 +1,12 @@
 @import '../../scss/index.scss';
 
 
-.general-layout{
+:root{
+    background-color: black;
+}
+
+.Dashboard{
+    height: 100vh;
     &-header{
        background-color: white;
        height: 50px;
@@ -32,9 +37,17 @@
         padding-top: 90px;
         padding-left: 15px;
         background-color: white;
+        
     }
     &-footer{
+        position: block;
         width: 100%;
         padding: 0;
     }
 }
+
+
+.menu-sider{
+    height: 100vh;
+}
+

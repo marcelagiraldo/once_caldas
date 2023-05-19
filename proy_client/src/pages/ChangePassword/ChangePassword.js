@@ -19,7 +19,7 @@ const MyFormItem = ({ name, ...props }) => {
     return <Form.Item name={concatName} {...props} />;
 };
 
-const App = () => {
+export const ChangePassword = () => {
     const onFinish = (value) => {
         console.log(value);
     };
@@ -67,5 +67,3 @@ const App = () => {
         </Form>
     );
 };
-
-export default App;

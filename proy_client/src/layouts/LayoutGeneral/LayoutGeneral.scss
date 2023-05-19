@@ -1,16 +1,22 @@
 @import '../../scss/index.scss';
 
 
-.general-layout{
+:root{
+    background-color: black;
+    align-items: flex-start;
+    position: center;
+}
+
+.InicioLayout{
     height: 100vh;
     &-header{
-       background-color: white;
-       height: 50px;
-       display: flex;
+       background-color: black;
+       height: 200px;
+       
        align-items: center;
        justify-content: flex-start;
-       padding: 0;
-       position: fixed;
+       padding: 0%;
+       position: center;
        top: 0;
        left: 0;
        width: 100%;
@@ -29,10 +35,10 @@
        }
     }
     &-content{
-        min-height: calc(100vh - 75px);
-        padding-top: 90px;
+        min-height: calc(50vh - 75px);
         padding-left: 15px;
-        background-color: white;
+        background-color: black;
+        
     }
     &-footer{
         position: block;
@@ -40,3 +46,21 @@
         padding: 0;
     }
 }
+
+
+.menu-sider{
+    height: 100vh;
+}
+
+.ant-layout-header{
+    position: block;
+    align-items: flex-start;
+    height: auto ;
+}
+.center-text{
+margin-bottom: 0%;
+}
+.ant-layout-content{
+    padding: 0%;
+}
+
