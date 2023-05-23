@@ -1,0 +1,23 @@
+:root{
+    background-color: white;
+}
+
+.label-fecha{
+    display: flex;
+    margin-left: 1000px;
+}
+
+.custom-form-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    //margin-left: 200px;
+    .ant-form-item-control {
+        flex: 2;
+    }
+}
+
+/* .label-izquierda{
+    margin-left: 200px;
+} */
