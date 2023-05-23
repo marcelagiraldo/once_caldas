@@ -1,10 +1,10 @@
 import React from 'react'
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
-import './SignIn.scss'
+import './Login.scss'
 import {FirstTop} from "../../components/TopComponents/FirstTop/FirstTop"
 
-export const SignIn = () => {
+export const Login = () => {
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
   };

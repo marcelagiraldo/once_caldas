@@ -1,19 +1,19 @@
 /* components > Layouts > Pages > routes */
 import { LayoutGeneral } from "../layouts/LayoutGeneral/LayoutGeneral";
 import { Admin } from "../pages/admin/Admin";
-import  {SignIn}  from "../pages/SignIn/SignIn";
+import  {Login}  from "../pages/Login/Login";
 import {AdminRegister} from "../pages/AdminRegister/AdminRegister";
 import {ChangePassword} from "../pages/ChangePassword/ChangePassword";
 import { Contact } from "../pages/Contact";
 import { NotFound } from "../pages/NotFound/NotFound";
 
+
 const AdminRoutes = [
     {path: '/admin', component: Admin, layout: LayoutGeneral},
-    {path: '/admin/sign-in', component: SignIn,layout: LayoutGeneral},
     {path: '/admin/admin-register', component: AdminRegister,layout: LayoutGeneral}
 ];
 const GeneralRoutes = [
-    {path: '/',component: SignIn,layout: LayoutGeneral},
+    {path: '/',component: Login,layout: LayoutGeneral},
     {path: '/contact',component: Contact,layout: LayoutGeneral},
     {path: '*',component: NotFound,layout: LayoutGeneral},
     {path: 'change-password',component: ChangePassword,layout: LayoutGeneral}
