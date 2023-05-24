@@ -1,19 +1,12 @@
 import { PlusOutlined } from '@ant-design/icons';
 import {
     Button,
-    Cascader,
-    Checkbox,
     Col,
     DatePicker,
     Form,
     Input,
-    InputNumber,
-    Radio,
     Row,
     Select,
-    Switch,
-    TreeSelect,
-    Upload,
 } from 'antd';
 import { useState } from 'react';
 import './Fevolution.scss';
@@ -28,13 +21,13 @@ const normFile = (e) => {
     return e?.fileList;
 };
 
-const FormDisabledDemo = () => {
+export const Fevolution = () => {
     const [componentDisabled, setComponentDisabled] = useState(true);
     return (
         <div className='container'>
             <Form
             labelCol={{
-            span: 4,
+            span: 10,
             }}
             wrapperCol={{
             span: 14,
@@ -48,17 +41,15 @@ const FormDisabledDemo = () => {
                 <h5 className='label-fecha'>Fecha: </h5>
                 <h5 className='label-fecha'>Hora: </h5>
                 <Row>
-                    <Col xs={4} sm={4} md={6} >
-                        <label className='label-izquierda'>Diagnóstico médico</label>
-                    </Col>
-                    <Col xs={4} sm={4} md={6}>
-                        <Form.Item className="custom-form-item">
-                        <Select>
-                            <Select.Option value="demo">Demo</Select.Option>
-                        </Select>
-                        </Form.Item>
+                    <Col >
+                        
                     </Col>
                 </Row>
+                <Form.Item label="Diagnóstico médico">
+                            <Select placeholder="Info api C01X">
+                                <Select.Option value="demo">api</Select.Option>
+                            </Select>
+                        </Form.Item>
                 <Form.Item label="Nombre Completo">
                     <Input />
                 </Form.Item>
@@ -105,4 +96,4 @@ const FormDisabledDemo = () => {
 };
 
 //export default () => <FormDisabledDemo />;
-export default FormDisabledDemo;
+
