@@ -1,7 +1,7 @@
 import React from 'react';
 import "./LogoutMenu.scss"
 
-import { DownOutlined, UserOutlined } from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 import { Dropdown, Space } from 'antd';
 const items = [
   {

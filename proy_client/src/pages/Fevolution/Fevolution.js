@@ -25,6 +25,7 @@ const normFile = (e) => {
 export const Fevolution = () => {
     return (
         <div className='container'>
+            <MenuTop addtitle='F.EVOLUCIÓN' userName='Lina Marin Montealegre Mesa'/>
             <Row>
                 <h5 className='label-fecha'>Fecha: </h5>
                 <h5 className='label-fecha'>Hora: </h5>
