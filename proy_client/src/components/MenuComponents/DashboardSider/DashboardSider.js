@@ -18,6 +18,7 @@ export const DashboardSider = (props) => {
             {key:"estudiantes/lista",icon:<TeamOutlined/>,label:"Lista estudiantes"},
             {key:"estudiantes/new",icon:<TeamOutlined/>,label:"Nuevo estudiante"}
         ]},
+        {key:"admin-register",icon:<HomeOutlined/>, label: "Admin"}
     ];
     const navigateTo = (e) => {
         const path = e.key;
