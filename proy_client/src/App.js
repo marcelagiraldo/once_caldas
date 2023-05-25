@@ -4,7 +4,6 @@ import './App.scss'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AllRoutesProject from './config/routes'
 
-
 const App = () => {
   return (
     <BrowserRouter>
@@ -25,5 +24,4 @@ const App = () => {
   );
 };
 
-export default App
-
+export default App;
