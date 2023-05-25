@@ -1,4 +1,5 @@
 import { PlusOutlined } from '@ant-design/icons';
+import { MenuTop } from "../../components/TopComponents/MenuTop/MenuTop"
 import {
     Button,
     Col,
@@ -24,6 +25,7 @@ const normFile = (e) => {
 export const Fevolution = () => {
     return (
         <div className='container'>
+            <MenuTop addtitle='F.EVOLUCIÓN' userName='Lina Marin Montealegre Mesa'/>
             <Row>
                 <h5 className='label-fecha'>Fecha: </h5>
                 <h5 className='label-fecha'>Hora: </h5>
@@ -129,4 +131,3 @@ export const Fevolution = () => {
 };
 
 //export default () => <FormDisabledDemo />;
-
