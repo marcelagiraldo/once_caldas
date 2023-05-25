@@ -22,76 +22,109 @@ const normFile = (e) => {
 };
 
 export const Fevolution = () => {
-    const [componentDisabled, setComponentDisabled] = useState(true);
     return (
         <div className='container'>
-            <Form
-            labelCol={{
-            span: 10,
-            }}
-            wrapperCol={{
-            span: 14,
-            }}
-            layout="horizontal"
-            //disabled={componentDisabled}
-            style={{
-            maxWidth: 600,
-            }}
-            >
+            <Row>
                 <h5 className='label-fecha'>Fecha: </h5>
                 <h5 className='label-fecha'>Hora: </h5>
-                <Row>
-                    <Col >
-                        
-                    </Col>
-                </Row>
-                <Form.Item label="Diagnóstico médico">
-                            <Select placeholder="Info api C01X">
-                                <Select.Option value="demo">api</Select.Option>
-                            </Select>
-                        </Form.Item>
-                <Form.Item label="Nombre Completo">
-                    <Input />
-                </Form.Item>
-                <Form.Item label="Documento">
-                    <Input />
-                </Form.Item>
-                <Form.Item label="Fecha de nacimiento">
-                    <Input />
-                </Form.Item>
-                <Form.Item label="Procedencia">
-                    <Input />
-                </Form.Item>
-                <Form.Item label="EPS">
-                    <Input />
-                </Form.Item>
-                <Form.Item label="Dirección de residencia">
-                    <Input />
-                </Form.Item>
-                <Form.Item label="Teléfono/Celular">
-                    <Input />
-                </Form.Item>
-                <Form.Item label="Posicioón de juego">
-                    <Input />
-                </Form.Item>
-                <Form.Item label="Tiempo de vinculación">
-                    <Input />
-                </Form.Item>
-                <Form.Item label="Club de procedencia">
-                    <Input />
-                </Form.Item>
-                <Form.Item label="Ejercicio físico adicional">
-                    <Input />
-                </Form.Item>
-                <Form.Item label="Interpretación/Observación">
-                    <TextArea rows={4} />
-                </Form.Item>
-                <Form.Item label="Button">
-                <Button>Salir</Button>
-                </Form.Item>
-            </Form>
+            </Row>
+            <Row>
+                <Col className='custom-form-item' flex="auto" md={8}>
+                    <Form.Item label="Diagnóstico médico" style={{ flex: 1 }}>
+                        <Select placeholder="Info api C01X" >
+                            <Select.Option value="demo">api</Select.Option>
+                        </Select>
+                    </Form.Item>
+                </Col>
+            </Row>
+            <Row>
+                <Col md={3} className='custom-form-item'>
+                    <label>Nombre Completo: </label>
+                </Col>
+                <Col md={19}>
+                    <Input className="custom-input large" />
+                </Col>
+            </Row>
+            <Row>
+                <Col md={3} className='custom-form-item'>
+                    <label>Documento:</label>
+                </Col>
+                <Col md={9}>
+                    <Input className="custom-input small" />
+                </Col>
+                <Col md={3} className='custom-label'>
+                    <label>Fecha de nacimiento:</label>
+                </Col>
+                <Col md={7}>
+                    <Input className="custom-input small" />
+                </Col>
+            </Row>
+            <Row>
+                <Col md={3} className='custom-form-item'>
+                    <label>Procedencia:</label>
+                </Col>
+                <Col md={9}>
+                    <Input className="custom-input small" />
+                </Col>
+                <Col md={3} className='custom-label'>
+                    <label>EPS:</label>
+                </Col>
+                <Col md={7}>
+                    <Input className="custom-input small" />
+                </Col>
+            </Row>
+            <Row>
+                <Col md={4} className='custom-form-item'>
+                    <label>Dirección de residencia:</label>
+                </Col>
+                <Col md={9}>
+                    <Input className="custom-input small" />
+                </Col>
+                <Col md={3} className='custom-label'>
+                    <label>Teléfono/Celular:</label>
+                </Col>
+                <Col md={7}>
+                    <Input className="custom-input small" />
+                </Col>
+            </Row>
+            <Row>
+                <Col md={3} className='custom-form-item'>
+                    <label>Posición de juego:</label>
+                </Col>
+                <Col md={9}>
+                    <Input className="custom-input small" />
+                </Col>
+                <Col md={4} className='custom-label'>
+                    <label>Tiempo de vinculación:</label>
+                </Col>
+                <Col md={7}>
+                    <Input className="custom-input small" />
+                </Col>
+            </Row>
+            <Row>
+                <Col md={3} className='custom-form-item'>
+                    <label>Club de procedencia:</label>
+                </Col>
+                <Col md={9}>
+                    <Input className="custom-input small" />
+                </Col>
+                <Col md={4} className='custom-label'>
+                    <label>Ejercicio físico adicional:</label>
+                </Col>
+                <Col md={7}>
+                    <Input className="custom-input small" />
+                </Col>
+            </Row>
+            <Row className='label-text-area'>
+                <label >Interpretación/Observación:</label>
+            </Row>
+            <Row>
+                <TextArea rows={4} className='text-area'/>
+            </Row>
+            <Row className='btn-position-evolution'>
+                <Button className='btn-style-evolution'>Salir</Button>
+            </Row>
         </div>
-        
     );
 };
 

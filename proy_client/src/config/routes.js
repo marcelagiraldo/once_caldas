@@ -9,7 +9,6 @@ import {Fevolution} from "../pages/Fevolution/Fevolution";
 import { Contact } from "../pages/Contact";
 import { NotFound } from "../pages/NotFound/NotFound";
 
-
 const AdminRoutes = [
     {path: '/admin', component: Admin, layout: LayoutGeneral},
     {path: '/admin/admin-register', component: AdminRegister,layout: LayoutGeneral}
