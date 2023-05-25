@@ -3,6 +3,7 @@ import OnceCaldas from "../../../assets/img/png/OnceCaldas.png";
 import UAM from "../../../assets/img/png/UAM.png";
 import "./MenuTop.scss"
 import { Row, Col } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 import { LogoutMenu } from '../../MenuComponents/LogoutMenu/LogoutMenu';
 
 //MenuTop recibe las propiedades y se las comparte a menusider
@@ -13,17 +14,17 @@ export const MenuTop = (props) => {
   return (
     <div className='menu-top'>
        <Row>
-      <Col xs={20} sm={12} md={8}>
+      <Col xs={20} sm={12} md={6}>
       <img src={OnceCaldas} alt='Logo' className='Once-Logo'/>
       </Col>
       <Col xs={20} sm={12} md={7} className='ant-row-text'>
       <h2 className='text-out-menu' >{addtitle}</h2>
       
       </Col>
-      <Col xs={20} sm={12} md={5}>
+      <Col xs={20} sm={12} md={6}>
       <img src={UAM} alt='Logo' className='UAM-Logo'/>
       </Col>
-      <Col md={4}>
+      <Col md={5}>
       <Row>
       <LogoutMenu userName={userName}></LogoutMenu>
       {/* <UserOutlined className='userLogo' /> */}

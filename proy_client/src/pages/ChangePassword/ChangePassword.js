@@ -27,7 +27,7 @@ export const ChangePassword = () => {
 
     return (
         <div>
-            <FirstTop addtitle="Change Password"/>
+            <FirstTop addtitle="Cambio Contraseña"/>
         <Form name="form_item_path" layout="vertical" onFinish={onFinish} className='change-password' >
             <MyFormItemGroup prefix={['user']}>
                 <MyFormItemGroup prefix={['name']}>

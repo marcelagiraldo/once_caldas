@@ -10,8 +10,10 @@ import { Contact } from "../pages/Contact";
 import { NotFound } from "../pages/NotFound/NotFound";
 import { Dashboard } from "../layouts/Dashboard/Dashboard"
 
+
 const AdminRoutes = [
     {path: '/admin', component: Admin, layout: Dashboard},
+    {path: '/admin/admin-register', component: AdminRegister,layout: LayoutGeneral},
     {path: '/admin/admin-register', component: AdminRegister,layout: LayoutGeneral}
 ];
 const GeneralRoutes = [
