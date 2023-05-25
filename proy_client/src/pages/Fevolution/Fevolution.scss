@@ -1,0 +1,86 @@
+@import '../../scss/variables';
+
+.label-fecha{
+    display: flex;
+    margin-left: 1000px;
+}
+
+.custom-form-item {
+    display: flex;
+    margin-left: 50px;
+}
+
+.custom-input {
+    &.large {
+        font-size: 16px;
+        padding: 0px;
+        margin-left: 0;
+        width: 100%;
+        max-width: 100%;
+        //margin-right: 50px;
+    }
+
+    &.small {
+        font-size: 16px;
+        padding: 0;
+    }
+
+    &.custom-width {
+        width: 300px;
+    }
+}
+
+.custom-label{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+:where(.css-dev-only-do-not-override-1me4733).ant-col-md-3 {
+    display: block;
+    flex: 0 0 12%;
+    max-width: 12.5%;
+}
+
+:where(.css-dev-only-do-not-override-1me4733).ant-col-md-4 {
+    display: block;
+    flex: 0 0 12%;
+    max-width: 12.5%;
+}
+
+.label-text-area{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-area{
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-position-evolution{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.btn-style-evolution{
+    font-size: 16px;
+    padding: 10px 10px;
+    background-color: #009541;
+    color: black;
+    border: none;
+    width: 300px;
+    height: 40px;
+    
+}
+
+/* .container{
+    display: flex;
+    align-items: center;
+} */
