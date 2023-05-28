@@ -2,8 +2,8 @@ import React from 'react'
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Col, Form, Input, Row } from 'antd';
 import './SignIn.scss'
-import OnceCaldas from "../../assets/img/png/OnceCaldas.png";
-import UAM from "../../assets/img/png/UAM.png";
+import OnceCaldas from "../../../assets/img/png/OnceCaldas.png";
+import UAM from "../../../assets/img/png/UAM.png";
 import {FooterPage} from "../../../components/FooterPage/FooterPage"
 
 const SignIn = () => {

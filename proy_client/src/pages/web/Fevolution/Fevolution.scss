@@ -17,9 +17,12 @@
 
 .custom-form-item {
     display: flex;
+    align-items: center;
+    justify-content: center;
     margin-left: 50px;
     font-family: BonnetGrotesqueNr-Regular;
-    font-size: 19px;
+    font-size: 25px;
+    width: 50px;
 }
 
 .custom-input {

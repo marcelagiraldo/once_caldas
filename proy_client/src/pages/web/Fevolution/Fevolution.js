@@ -77,8 +77,8 @@ export const Fevolution = () => {
                 </Col>
             </Row>
             <Row>
-                <Col md={4} className='custom-form-item'>
-                    <label>Nombre Completo: </label>
+                <Col md={4} >
+                    <label className='custom-form-item'>Nombre Completo: </label>
                 </Col>
                 <Col md={19}>
                     <Input className="custom-input large" 
