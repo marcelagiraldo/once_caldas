@@ -1,0 +1,75 @@
+[33mcommit 0bb16eab08dc77d3ecdd946b154ac69987c0643f[m[33m ([m[1;36mHEAD -> [m[1;32mfeature-2[m[33m)[m
+Author: yansaid21 <yansaid21@gmail.com>
+Date:   Thu May 25 14:35:48 2023 -0500
+
+    logoutMenu ready
+
+[33mcommit 771c5f2aa9166d7a3859c017f6d5b1fe200b8aa3[m[33m ([m[1;31morigin/feature-2[m[33m)[m
+Merge: 3dc5e3b 0c6b353
+Author: yansaid21 <yansaid21@gmail.com>
+Date:   Thu May 25 11:39:15 2023 -0500
+
+    Merge branch 'feature-2' of https://github.com/marcelagiraldo/once_caldas into feature-2
+    reabasing commits to pull request
+
+[33mcommit 3dc5e3b04e083c05d92756fdb6f33d564905e732[m
+Author: yansaid21 <yansaid21@gmail.com>
+Date:   Thu May 25 11:21:14 2023 -0500
+
+    organization
+    
+    menuTop ready
+
+[33mcommit 0c6b353040964eb4d63ec21839e337242f4fdbb9[m
+Author: yansaid21 <yansaid21@gmail.com>
+Date:   Thu May 25 11:31:40 2023 -0500
+
+    menuTop ready
+
+[33mcommit 6c52f5ab2184e98189a229e7b724b6d6554fcd38[m
+Author: yansaid21 <yansaid21@gmail.com>
+Date:   Thu May 25 11:21:14 2023 -0500
+
+    organization
+
+[33mcommit 729faa4d189517d2a97fcdbf4ae613c9c3150c55[m[33m ([m[1;31morigin/staging[m[33m)[m
+Author: marcelagiraldo <84403422+marcelagiraldo@users.noreply.github.com>
+Date:   Thu May 25 02:07:22 2023 -0500
+
+    update
+
+[33mcommit 162a6ad96ef3daf350828ec6c05d222c25b70a09[m
+Author: marcelagiraldo <84403422+marcelagiraldo@users.noreply.github.com>
+Date:   Thu May 25 01:48:30 2023 -0500
+
+    CRUD admin and students (#3)
+
+[33mcommit ce6335377345bb2cf2fe96aecd76b69c3e1df4f9[m
+Author: GeraldineRomer <84744664+GeraldineRomer@users.noreply.github.com>
+Date:   Thu May 25 01:16:14 2023 -0500
+
+    Feature 1
+
+[33mcommit 6889bc335b7d157521c9116a0429a4633fef08fb[m
+Author: yansaid21 <yansaid21@gmail.com>
+Date:   Tue May 23 16:50:46 2023 -0500
+
+    layout general listo
+
+[33mcommit 2c2c374c000d8c0f5fb8c817c883170136e1506c[m
+Author: yansaid21 <yansaid21@gmail.com>
+Date:   Fri May 19 15:50:24 2023 -0500
+
+    login arreglado
+
+[33mcommit 68f874d8683e7d65fd560cf659dfb4ea965a9ee6[m
+Author: GeraldineRomer <geraldine.rome0104@gmail.com>
+Date:   Mon May 15 10:19:21 2023 -0500
+
+    register admin & change password
+
+[33mcommit 76f52641970f1d72a51f59ea077c9e253900a62d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/feature-3[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: marcelagiraldo <leidymarcelaalzategiraldo@gmail.com>
+Date:   Fri May 12 19:26:53 2023 -0500
+
+    initial project
