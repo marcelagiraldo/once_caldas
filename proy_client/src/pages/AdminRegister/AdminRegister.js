@@ -1,4 +1,5 @@
 import React from 'react'
+import { FirstTop } from '../../components/TopComponents/FirstTop/FirstTop';
 import { LockOutlined} from '@ant-design/icons';
 import { Button, Form, Input} from 'antd';
 import './AdminRegister.scss';
@@ -34,6 +35,8 @@ export const AdminRegister = () => {
     };
  */
     return (
+        <div >
+            <FirstTop addtitle="Registro Administrador"/>
         <Form name="form_item_path" layout="vertical" onFinish={onFinish} className='register-admin' >
             <MyFormItemGroup prefix={['user']}>
                 <MyFormItemGroup prefix={['name']}>
@@ -84,6 +87,7 @@ export const AdminRegister = () => {
                 Listo
             </Button>
         </Form>
+        </div>
     );
 };
 
