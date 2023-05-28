@@ -1,12 +1,12 @@
-from database import db_connection
 from flask import Blueprint, request,jsonify
 from http import HTTPStatus
+from src.models.student import Student
+from flask_jwt_extended import jwt_required,get_jwt_identity
+from src.app import db
 
-from models.student import Student
-
-db = db_connection()
-
-collection_student = db.students
+if 'students' not in db.list_collection_names():
+    db.create_collection('students')
+collection_student = db['students']
 
 students = Blueprint("students",__name__,url_prefix="/api/v1/students")
 
@@ -41,7 +41,7 @@ def created_user():
 
     return jsonify(response), HTTPStatus.CREATED
 
-@students.get('/')
+@students.get('/todos')
 def get_students():
     students_find = collection_student.find()
     students_list = []
@@ -57,6 +57,12 @@ def get_students():
         })
 
     return jsonify(students_list)
+
+@students.route('/', methods=['GET','PUT','DELETE'])
+@jwt_required()
+def get_student():
+    document
+
 
 @students.get('/<document_student>')
 def get_student(document_student):
