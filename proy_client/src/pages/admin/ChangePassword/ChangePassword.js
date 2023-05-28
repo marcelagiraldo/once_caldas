@@ -26,8 +26,6 @@ export const ChangePassword = () => {
     };
 
     return (
-        <div>
-            <FirstTop addtitle="Change Password"/>
         <Form name="form_item_path" layout="vertical" onFinish={onFinish} className='change-password' >
             <MyFormItemGroup prefix={['user']}>
                 <MyFormItemGroup prefix={['name']}>
@@ -68,6 +66,5 @@ export const ChangePassword = () => {
                 Listo
             </Button>
         </Form>
-        </div>
     );
 };

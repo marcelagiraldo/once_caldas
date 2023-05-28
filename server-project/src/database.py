@@ -1,8 +1,16 @@
 from flask_pymongo import PyMongo
-from pymongo import MongoClient
 
-def db_connection():
-    mongo_uri = "mongodb+srv://project:project@cluster0.xjyado0.mongodb.net/?retryWrites=true&w=majority"
+def connection_db(app):
+    try:
+        mongodb = PyMongo(app,uri='mongodb+srv://once_project:once_project@cluster0.1nsgtwx.mongodb.net/?retryWrites=true&w=majority')
+        db =mongodb.db
+        print('conexion con exito a la db')
+    except Exception as e:
+        return 'Error en la conección',e
+    return db
+
+''' def db_connection():
+    mongo_uri = 'mongodb+srv://once_project:once_project@cluster0.1nsgtwx.mongodb.net/?retryWrites=true&w=majority'
     try:
         client = MongoClient(mongo_uri,serverSelectionTimeoutMS=10000)
         db = client.db_project
@@ -19,5 +27,4 @@ def db_connection():
     else:
         print("No se encontró un nodo primario disponible")
 
-    return db
-
+    return db '''
