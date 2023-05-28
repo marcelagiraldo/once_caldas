@@ -1,16 +1,17 @@
-from database import db_connection
 from flask import Blueprint, request,jsonify
 from http import HTTPStatus
+from src.models.admin import Admin
+#from extensions import mongodb_client
+from app import db
 
-from models.admin import Admin
+if 'admins' not in db.list_collection_names():
+    db.create_collection('admins')
 
-db = db_connection()
+collection_admin = db['admins']
 
-collection_admin = db.admins
+admins_blueprint = Blueprint("admins",__name__,url_prefix="/api/v1/admins")
 
-admins = Blueprint("admins",__name__,url_prefix="/api/v1/admins")
-
-@admins.post('/')
+@admins_blueprint.route('/', methods=['POST'])
 def created_admin():
     try:
         name = request.json.get('name')
@@ -22,9 +23,8 @@ def created_admin():
         admin = Admin(name, lastname, email, password, repeat_password)
 
         result = collection_admin.insert_one(admin.toDBCollection())
-        inserted_id = result.inserted_id
 
-        # Obtener el admin insertado
+        inserted_id = result.inserted_id
         inserted_admin = collection_admin.find_one({'_id': inserted_id})
 
         response = {
@@ -38,7 +38,7 @@ def created_admin():
 
     return jsonify(response), HTTPStatus.CREATED
 
-@admins.get('/')
+@admins_blueprint.route('/', methods=['GET'])
 def get_admins():
     admins_find = collection_admin.find()
     admins_list = []
@@ -53,56 +53,54 @@ def get_admins():
 
     return jsonify(admins_list)
 
-@admins.get('/<email>')
+@admins_blueprint.route('/<email>', methods=['GET','PUT','DELETE'])
 def get_admin(email):
-    admin_find = collection_admin.find_one({'email':email})
-    if admin_find:
-        response = {
-            'name':admin_find['name'],
-            'lastname':admin_find['lastname'],
-            'email':admin_find['email'],
-            'password':admin_find['password'],
-        }
-        return jsonify(response),HTTPStatus.OK
-    else:
-        return {"error":"Resource not found"}, HTTPStatus.NOT_FOUND
+    if request.method == 'GET':
+        admin_find = collection_admin.find_one({'email':email})
+        if admin_find:
+            response = {
+                'name':admin_find['name'],
+                'lastname':admin_find['lastname'],
+                'email':admin_find['email'],
+                'password':admin_find['password'],
+            }
+            return jsonify(response),HTTPStatus.OK
+        else:
+            return {"error":"Resource not found"}, HTTPStatus.NOT_FOUND
+    elif request.method == 'PUT':
+        try:
+            admin_put = collection_admin.find_one({'email': email})
+            if not admin_put:
+                return {"error": "Resource not found"}, HTTPStatus.NOT_FOUND
 
-@admins.put('/<email>')
-def update_user(email):
-    try:
-        admin_put = collection_admin.find_one({'email': email})
-        if not admin_put:
-            return {"error": "Resource not found"}, HTTPStatus.NOT_FOUND
+            name = request.json.get('name', admin_put['name'])
+            lastname = request.json.get('lastname', admin_put['lastname'])
+            email = request.json.get('email', admin_put['email'])
+            password = request.json.get('password', admin_put['password'])
+            repeat_password = request.json.get('repeat_password', admin_put['password'])
 
-        name = request.json.get('name', admin_put['name'])
-        lastname = request.json.get('lastname', admin_put['lastname'])
-        email = request.json.get('email', admin_put['email'])
-        password = request.json.get('password', admin_put['password'])
-        repeat_password = request.json.get('repeat_password', admin_put['password'])
+            result = collection_admin.update_one(
+                {'email': email},
+                {'$set': Admin(name, lastname, email, password, repeat_password).toDBCollection()}
+            )
+            updated_admin = collection_admin.find_one({'email': email})
+            response = {
+                'name': name,
+                'lastname': lastname,
+                'email': email,
+                'password': updated_admin['password']
+            }
 
-        result = collection_admin.update_one(
-            {'email': email},
-            {'$set': Admin(name, lastname, email, password, repeat_password).toDBCollection()}
-        )
+        except Exception as e:
+            print('Error:', e)
+            return 'El admin no pudo ser actualizado', HTTPStatus.BAD_REQUEST
 
-        response = {
-            'name': name,
-            'lastname': lastname,
-            'email': email,
-            'password': password
-        }
+        return jsonify(response), HTTPStatus.OK
+    elif request.method == 'DELETE':
+        try:
+            collection_admin.delete_one({'email':email})
+        except Exception as e:
+            return print("Error al eliminar el estudiante",e),HTTPStatus.BAD_REQUEST
 
-    except Exception as e:
-        print('Error:', e)
-        return 'El admin no pudo ser actualizado', HTTPStatus.BAD_REQUEST
+        return "data:[]",HTTPStatus.NO_CONTENT
 
-    return jsonify(response), HTTPStatus.OK
-
-@admins.delete('/<email>')
-def delete_user(email):
-    try:
-        collection_admin.delete_one({'email':email})
-    except Exception as e:
-        return print("Error al eliminar el estudiante",e),HTTPStatus.BAD_REQUEST
-
-    return "data:''",HTTPStatus.NO_CONTENT
