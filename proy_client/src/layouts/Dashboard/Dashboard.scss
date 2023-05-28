@@ -1,7 +1,11 @@
 @import '../../scss/index.scss';
 
 
-.general-layout{
+:root{
+    background-color: black;
+}
+
+.Dashboard{
     height: 100vh;
     &-header{
        background-color: white;
@@ -33,6 +37,7 @@
         padding-top: 90px;
         padding-left: 15px;
         background-color: white;
+        
     }
     &-footer{
         position: block;
@@ -40,3 +45,9 @@
         padding: 0;
     }
 }
+
+
+.menu-sider{
+    height: 100vh;
+}
+

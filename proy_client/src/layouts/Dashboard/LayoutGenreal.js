@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { MenuSider } from '../../components/MenuComponents/MenuSider/MenuSider';
 import { MenuTop } from '../../components/MenuComponents/MenuTop/MenuTop';
-import "./LayoutGeneral.scss"
+import "./LayoutGenreral.scss"
 import { FooterPage } from '../../components/FooterPage/FooterPage';
 import { Layout } from 'antd';
 
@@ -30,3 +30,4 @@ export const LayoutGenreal = (props) => {
     </Layout>
   );
 };
+
