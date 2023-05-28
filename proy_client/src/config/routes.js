@@ -6,7 +6,6 @@ import  {Login}  from "../pages/web/Login/Login";
 import {AdminRegister} from "../pages/admin/AdminRegister/AdminRegister";
 import {ChangePassword} from "../pages/admin/ChangePassword/ChangePassword";
 import {Fevolution} from "../pages/web/Fevolution/Fevolution";
-import { Contact } from "../pages/Contact";
 import { NotFound } from "../pages/web/NotFound/NotFound";
 import { Dashboard } from '../layouts/Dashboard/Dashboard';
 import { StudentsList } from '../pages/admin/StudentsList/StudentsList';

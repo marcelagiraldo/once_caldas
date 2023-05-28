@@ -17,6 +17,8 @@ import { DropdownActivity } from '../../../components/DropdownComponents/Dropdow
 import { useFormik } from 'formik';
 import { initialValues, validationSchema } from './FevolutionForm.form';
 import { Auth } from '../../../api/auth';
+import { MenuTop } from '../../../components/TopComponents/MenuTop/MenuTop';
+import { AdminName } from '../../../api/Admin';
 
 const { TextArea } = Input;
 
@@ -24,9 +26,11 @@ const onChange = (e) => {
     console.log(`checked = ${e.target.checked}`);
 };
 
+
 const authController = new Auth();
 
 export const Fevolution = () => {
+    const adminName = AdminName();
     const [currentDate, setCurrentDate] = useState(new Date());
     const [error, setError] = useState("");
 
@@ -59,6 +63,8 @@ export const Fevolution = () => {
     });
 
     return (
+        <div>
+            <MenuTop addtitle="F.EVOLUCIÓN" userName={adminName}/>
         <Form className='form-evolution' onSubmit={formik.handleSubmit}>
             <Row>
                 <h5 className='label-fecha'>Fecha: {formattedDate}</h5>
@@ -252,6 +258,7 @@ export const Fevolution = () => {
                 </Col>
             </Row>
         </Form>
+        </div>
     );
 };
 

@@ -22,7 +22,7 @@ export const Login = () => {
     onSubmit: async (formValue) => {
         try{
             setError("");
-            await authController.register(formValue);
+            await authController.login(formValue);
         } catch (error) {
             setError("Error en el servidor con validación de formato de evolución");
         }

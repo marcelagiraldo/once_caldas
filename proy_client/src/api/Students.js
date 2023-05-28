@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export const GetAdmin = () => {
+export const GetUsers = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {

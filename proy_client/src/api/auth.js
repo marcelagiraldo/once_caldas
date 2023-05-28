@@ -6,7 +6,7 @@ export class Auth {
     baseapi = BASE_PATH;
 
     register = async (data) => {
-        const url = `${this.baseapi}/${API_ROUTES.REGISTER}`;
+        const url = `${BASE_PATH}/${API_ROUTES.REGISTER}`;
         console.log(url);
         const params = {
             method: 'POST',
@@ -31,7 +31,7 @@ export class Auth {
     };
 
     login = async (data) => {
-        const url = `${this.baseapi}/${API_ROUTES.LOGIN}`;
+        const url = `${BASE_PATH}/${API_ROUTES.LOGIN}`;
         console.log(url);
         const params = {
             method: "POST",
