@@ -1,5 +1,6 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { MenuTop } from "../../components/TopComponents/MenuTop/MenuTop"
+import { SaveButton } from '../../components/UsersComponents/SaveButton/SaveButton';
 import {
     Button,
     Col,
@@ -124,7 +125,7 @@ export const Fevolution = () => {
                 <TextArea rows={4} className='text-area'/>
             </Row>
             <Row className='btn-position-evolution'>
-                <Button className='btn-style-evolution'>Salir</Button>
+                <SaveButton/>
             </Row>
         </div>
     );
