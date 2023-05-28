@@ -2,7 +2,6 @@ import React from 'react'
 import { LockOutlined} from '@ant-design/icons';
 import { Button, Form, Input} from 'antd';
 import './ChangePassword.scss';
-import { FirstTop } from "../../components/TopComponents/FirstTop/FirstTop"
 /* import { useRef } from 'react'; */
 
 const MyFormItemContext = React.createContext([]);
@@ -26,8 +25,6 @@ export const ChangePassword = () => {
     };
 
     return (
-        <div>
-            <FirstTop addtitle="Change Password"/>
         <Form name="form_item_path" layout="vertical" onFinish={onFinish} className='change-password' >
             <MyFormItemGroup prefix={['user']}>
                 <MyFormItemGroup prefix={['name']}>
@@ -68,6 +65,5 @@ export const ChangePassword = () => {
                 Listo
             </Button>
         </Form>
-        </div>
     );
 };

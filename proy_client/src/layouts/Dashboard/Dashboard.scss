@@ -8,11 +8,8 @@
 .Dashboard{
     height: 100vh;
     &-header{
-       background-color: white;
-       height: 50px;
-       display: flex;
+       background-color: black;
        align-items: center;
-       justify-content: flex-start;
        padding: 0;
        position: fixed;
        top: 0;
@@ -34,8 +31,6 @@
     }
     &-content{
         min-height: calc(100vh - 75px);
-        padding-top: 90px;
-        padding-left: 15px;
         background-color: white;
         
     }
@@ -49,5 +44,8 @@
 
 .menu-sider{
     height: 100vh;
+    margin-top: 50px;
 }
-
+.ant-layout{
+    background-color: black;
+}
