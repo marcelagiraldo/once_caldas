@@ -27,12 +27,12 @@ export const DropdownDay = () => {
         items,
         onClick: handleMenuClick,
     };
-    
+
     return (
         <Dropdown menu={menuProps}>
             <Button>
                     <Space>
-                        {selectedOption}
+                        <label className="label">{selectedOption}</label>
                         <DownOutlined />
                     </Space>
             </Button>

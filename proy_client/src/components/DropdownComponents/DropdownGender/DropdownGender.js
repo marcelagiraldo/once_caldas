@@ -37,7 +37,7 @@ export const DropdownGenero = () => {
         <Dropdown menu={menuProps}>
             <Button>
                     <Space>
-                        {selectedOption}
+                        <label className="label">{selectedOption}</label>
                         <DownOutlined />
                     </Space>
             </Button>

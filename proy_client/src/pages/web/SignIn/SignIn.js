@@ -1,16 +1,28 @@
 import React from 'react'
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Form, Input } from 'antd';
-import './Login.scss'
-import {FirstTop} from "../../components/TopComponents/FirstTop/FirstTop"
+import { Button, Col, Form, Input, Row } from 'antd';
+import './SignIn.scss'
+import OnceCaldas from "../../assets/img/png/OnceCaldas.png";
+import UAM from "../../assets/img/png/UAM.png";
+import {FooterPage} from "../../../components/FooterPage/FooterPage"
 
-export const Login = () => {
+const SignIn = () => {
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
   };
   return (
     <div>
-      <FirstTop addtitle="Inicio Sesion"/>
+        <Row>
+          <Col xs={24} sm={12} md={8}>
+            <img src={OnceCaldas} alt='Logo' className='Logo'/>
+          </Col>
+          <Col xs={24} sm={12} md={8}>
+            <h2 className='text-out' >Inicio de Sesión</h2>
+          </Col>
+          <Col xs={24} sm={12} md={8}>
+            <img src={UAM} alt='Logo' className='Logo-UAM'/>
+          </Col>
+        </Row>
       <Form
         name="normal_login"
         layout="vertical"
@@ -54,6 +66,9 @@ export const Login = () => {
           </Button>
         </Form.Item>
       </Form>
+      <FooterPage/>
     </div>
   )
 }
+
+export default SignIn

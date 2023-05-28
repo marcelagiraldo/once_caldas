@@ -2,12 +2,12 @@
 import { LayoutGeneral } from "../layouts/LayoutGeneral/LayoutGeneral";
 import { LayoutMenu } from "../layouts/LayoutMenu/LayoutMenu";
 import { Admin } from "../pages/admin/Admin";
-import  {Login}  from "../pages/Login/Login";
-import {AdminRegister} from "../pages/AdminRegister/AdminRegister";
-import {ChangePassword} from "../pages/ChangePassword/ChangePassword";
-import {Fevolution} from "../pages/Fevolution/Fevolution";
+import  {Login}  from "../pages/web/Login/Login";
+import {AdminRegister} from "../pages/admin/AdminRegister/AdminRegister";
+import {ChangePassword} from "../pages/admin/ChangePassword/ChangePassword";
+import {Fevolution} from "../pages/web/Fevolution/Fevolution";
 import { Contact } from "../pages/Contact";
-import { NotFound } from "../pages/NotFound/NotFound";
+import { NotFound } from "../pages/web/NotFound/NotFound";
 
 const AdminRoutes = [
     {path: '/admin', component: Admin, layout: LayoutGeneral},

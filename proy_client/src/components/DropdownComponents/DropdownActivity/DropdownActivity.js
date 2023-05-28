@@ -29,10 +29,10 @@ export const DropdownActivity = () => {
     };
 
     return (
-        <Dropdown menu={menuProps} >
+        <Dropdown menu={menuProps}>
             <Button>
                     <Space>
-                        {selectedOption}
+                        <label className="label">{selectedOption}</label>
                         <DownOutlined />
                     </Space>
             </Button>

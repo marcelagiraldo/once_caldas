@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { LockOutlined} from '@ant-design/icons';
 import { Button, Form, Input} from 'antd';
 import './AdminRegister.scss';
-import { FirstTop } from "../../components/TopComponents/FirstTop/FirstTop"
-import { Auth } from '../../api/auth';
+import { FirstTop } from "../../../components/TopComponents/FirstTop/FirstTop"
+import { Auth } from '../../../api/auth';
 import { useFormik } from 'formik';
 import { initialValues, validationSchema } from './AdminRegisterForm.form';
 /* import { useRef } from 'react'; */

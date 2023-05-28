@@ -1,6 +1,6 @@
-@import '../../scss/variables';
+@import '../../../scss/variables';
 
-.change-password{
+.register-admin{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,6 +10,10 @@
         width: 100%;
         min-width: 200px;
         max-width: 400px;
+    }
+    &__error{
+        color: $error !important;
+        text-align: center;
     }
 }
 
@@ -28,7 +32,6 @@
     font-size: 20px;
     font-family: BonnetGrotesqueNr-Regular;
     border-color: white;
-    margin-top: 20px;
 }
 
 .ant-input {
@@ -41,3 +44,4 @@
         margin-right: 8px;
     }
 } 
+

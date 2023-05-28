@@ -2,7 +2,7 @@ import React from 'react'
 import { LockOutlined} from '@ant-design/icons';
 import { Button, Form, Input} from 'antd';
 import './ChangePassword.scss';
-import { FirstTop } from "../../components/TopComponents/FirstTop/FirstTop"
+import { FirstTop } from "../../../components/TopComponents/FirstTop/FirstTop"
 /* import { useRef } from 'react'; */
 
 const MyFormItemContext = React.createContext([]);

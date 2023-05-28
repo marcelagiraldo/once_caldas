@@ -1,20 +1,25 @@
-@import '../../scss/variables';
+@import '../../../scss/variables';
 
 .form-evolution{
     &__error{
         color: $error !important;
         text-align: center;
     }
+    font-family: BonnetGrotesqueNr-Regular;
 }
 
 .label-fecha{
     display: flex;
     margin-left: 1000px;
+    font-family: BonnetGrotesqueNr-Regular;
+    font-size: 16px;
 }
 
 .custom-form-item {
     display: flex;
     margin-left: 50px;
+    font-family: BonnetGrotesqueNr-Regular;
+    font-size: 19px;
 }
 
 .custom-input {
@@ -40,6 +45,8 @@
 .custom-label{
     margin-left: 5px;
     margin-right: 5px;
+    font-family: BonnetGrotesqueNr-Regular;
+    font-size: 19px;
 }
 
 :where(.css-dev-only-do-not-override-1me4733).ant-col-md-3 {
@@ -59,6 +66,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: BonnetGrotesqueNr-Regular;
+    font-size: 22px;
 }
 
 .text-area{
@@ -87,6 +96,8 @@
         color: #fff;
         text-emphasis-color: white;
     }
+    font-family: BonnetGrotesqueNr-Regular;
+    font-size: 25px;
 }
 :where(.css-dev-only-do-not-override-1me4733).ant-btn-default:not(:disabled):hover {
     color: black;
@@ -97,6 +108,8 @@
     margin-top: 20px;
     display: flex;
     flex-direction: column;
+    font-family: BonnetGrotesqueNr-Regular;
+    font-size: 19px;
 }
 
 .dropdown-gender{
@@ -115,6 +128,8 @@
     &:checked {
         background-color: black;
     }
+    font-family: BonnetGrotesqueNr-Regular;
+    font-size: 25px;
 }
 
 :where(.css-dev-only-do-not-override-1me4733).ant-checkbox-checked:after {
@@ -150,11 +165,12 @@
 }
 
 .select{
-    margin-left: 20px;
+    margin-left: 0px;
+    font-family: BonnetGrotesqueNr-Regular;
+    //font-size: 25px;
 }
 
-
-/* .container{
-    display: flex;
-    align-items: center;
-} */
+.select-label{
+    font-family: BonnetGrotesqueNr-Regular;
+    font-size: 25px;
+}

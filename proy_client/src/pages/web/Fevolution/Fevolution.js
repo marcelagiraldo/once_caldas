@@ -10,13 +10,13 @@ import {
 } from 'antd';
 
 import './Fevolution.scss';
-import {DropdownGenero} from '../../components/DropdownComponents/DropdownGender/DropdownGender';
-import { DropdownDay } from '../../components/DropdownComponents/DropdownDay/DropdownDay';
-import { DropdownActivity } from '../../components/DropdownComponents/DropdownActivity/DropdownActivity';
+import {DropdownGenero} from '../../../components/DropdownComponents/DropdownGender/DropdownGender';
+import { DropdownDay } from '../../../components/DropdownComponents/DropdownDay/DropdownDay';
+import { DropdownActivity } from '../../../components/DropdownComponents/DropdownActivity/DropdownActivity';
 
 import { useFormik } from 'formik';
 import { initialValues, validationSchema } from './FevolutionForm.form';
-import { Auth } from '../../api/auth';
+import { Auth } from '../../../api/auth';
 
 const { TextArea } = Input;
 
@@ -65,8 +65,11 @@ export const Fevolution = () => {
                 <h5 className='label-fecha'>Hora: {formattedTime}</h5>
             </Row>
             <Row>
-                <Col className='custom-form-item' flex="auto" md={8}>
-                    <Form.Item label="Diagnóstico médico" style={{ flex: 1 }}>
+                <Col md={3} className='custom-form-item'>
+                    <label>Diagnóstico médico</label>
+                </Col>
+                <Col flex="auto" md={8}>
+                    <Form.Item style={{ flex: 1 }}>
                         <Select placeholder="Info api C01X" className='select'>
                             <Select.Option value="demo">api</Select.Option>
                         </Select>
