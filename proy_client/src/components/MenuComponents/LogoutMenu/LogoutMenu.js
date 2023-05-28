@@ -13,7 +13,7 @@ const items = [
     key: '1',
   },
   {
-    label: <a href="https://www.aliyun.com">Logout</a>,
+    label: <a href="https://www.aliyun.com">Cerrar Sesión</a>,
     key: '2',
   }
 
