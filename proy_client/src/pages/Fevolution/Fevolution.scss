@@ -1,5 +1,12 @@
 @import '../../scss/variables';
 
+.form-evolution{
+    &__error{
+        color: $error !important;
+        text-align: center;
+    }
+}
+
 .label-fecha{
     display: flex;
     margin-left: 1000px;
@@ -17,7 +24,7 @@
         margin-left: 0;
         width: 100%;
         max-width: 100%;
-        //margin-right: 50px;
+        margin-right: 50px;
     }
 
     &.small {
@@ -61,24 +68,91 @@
     margin-bottom: 10px;
 }
 
-.btn-position-evolution{
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
 .btn-style-evolution{
+    display: flex;
     font-size: 16px;
     padding: 10px 10px;
     background-color: #009541;
-    color: black;
+    color: white;
     border: none;
-    width: 300px;
+    width: 200px;
     height: 40px;
-    
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 417px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+        color: #fff;
+        text-emphasis-color: white;
+    }
 }
+:where(.css-dev-only-do-not-override-1me4733).ant-btn-default:not(:disabled):hover {
+    color: black;
+    border-color: black;
+}
+
+.label-dropdown{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-gender{
+    margin-left: 300px;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox{
+    margin-left: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    &:checked {
+        background-color: black;
+    }
+}
+
+:where(.css-dev-only-do-not-override-1me4733).ant-checkbox-checked:after {
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    visibility: hidden;
+    border: 2px solid black;
+    animation-name: css-dev-only-do-not-override-1me4733-antCheckboxEffect;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: backwards;
+    content: "";
+    transition: all 0.3s;
+}
+
+:where(.css-dev-only-do-not-override-1me4733).ant-checkbox-checked .ant-checkbox-inner {
+    background-color: black;
+    border-color: black;
+}
+:where(.css-dev-only-do-not-override-1me4733).ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover .ant-checkbox-inner, :where(.css-dev-only-do-not-override-1me4733).ant-checkbox:not(.ant-checkbox-disabled):hover .ant-checkbox-inner {
+    border-color: black;
+}
+:where(.css-dev-only-do-not-override-1me4733).ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover .ant-checkbox-checked:not(.ant-checkbox-disabled) .ant-checkbox-inner {
+    background-color: black;
+    border-color: transparent;
+    &:hover{
+        color: black;
+    }
+}
+
+.select{
+    margin-left: 20px;
+}
+
 
 /* .container{
     display: flex;

@@ -11,6 +11,10 @@
         min-width: 200px;
         max-width: 400px;
     }
+    &__error{
+        color: $error !important;
+        text-align: center;
+    }
 }
 
 .my-label{
