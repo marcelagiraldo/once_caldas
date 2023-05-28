@@ -1,5 +1,13 @@
 from werkzeug.security import generate_password_hash,check_password_hash
+''' from mongoengine import Document, StringField, EmailField, DateTimeField, ReferenceField, connect
 
+class Student_model(Document):
+    name = StringField(required=True)
+    email = EmailField(required=True, unique=True)
+    password = StringField(required=True)
+
+
+ '''
 class Student:
     def __init__(self,document,type_document,name,lastname,email,password):
         self.document = document

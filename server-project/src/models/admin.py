@@ -1,13 +1,5 @@
 from werkzeug.security import generate_password_hash,check_password_hash
 from http import HTTPStatus
-from marshmallow import Schema, fields, validate
-
-''' class AdminSchema(Schema):
-    name = fields.Str(required=True)
-    last_name = fields.Str(required=True)
-    email = fields.Email(required=True)
-    password = fields.Str(required=True, validate=validate.Length(min=8))
-    repeat_password = fields.Str(required=True, validate=validate.Equal(to='password')) '''
 
 class Admin:
     def __init__(self,name,lastname,email,password,repeat_password):
