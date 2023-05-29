@@ -23,8 +23,8 @@ def login():
 
     admin = collection_admin.find_one({'email': email})
     print(admin)
-    
-    if not admin or not Admin(admin['name'],admin['lastname'],admin['email'],admin['password'],admin['password']).check_password(password):
+
+    if not admin or not Admin(admin['name'],admin['lastname'],admin['email'],admin['password'],admin['password'],collection_admin).check_password(password):
         return {'error': 'Wrong email or password'}, 401
 
     access_token = create_access_token(identity=str(admin['_id']))
