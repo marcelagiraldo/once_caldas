@@ -14,7 +14,6 @@ auth = Blueprint("auth",__name__,url_prefix="/api/v1/auth")
 
 @auth.route('/login', methods=['POST'])
 def login():
-    print('----------------aqui ta auth---------------')
     data = request.get_json()
     if not data:
         return {'error': 'Missing JSON data'}, 400

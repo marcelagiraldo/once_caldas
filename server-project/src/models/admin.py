@@ -2,11 +2,6 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from http import HTTPStatus
 import re
 
-from werkzeug.security import generate_password_hash, check_password_hash
-from http import HTTPStatus
-import re
-
-
 class Admin:
     def __init__(self, name, lastname, email, password, repeat_password,collection):
         self.name = name
@@ -15,6 +10,12 @@ class Admin:
         self.password = password
         self.repeat_password = repeat_password
         self.collection = collection
+
+        ''' if not self.validate_password():
+            raise AssertionError('Passwords do not match')
+
+        if not self.validate_email(collection_admin,email):
+            raise AssertionError('Passwords do not match') '''
 
     @staticmethod
     def hash_password(password):
@@ -117,6 +118,41 @@ class Admin:
 
 
     ''' @staticmethod
+    def verify_password(password,repeat_password):
+        try:
+            if password == repeat_password:
+                hashed = generate_password_hash(password)
+        except Exception as e:
+            return "Las contraseñas son diferentes",e,HTTPStatus.BAD_REQUEST
+        return hashed '''
+
+    ''' def validate_email(self,collection_admin):
+        #Validar que el email tenga la estructura
+        email_pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+        if not re.match(email_pattern, self.email):
+            return False
+
+        # Validar que el email no se repita en la base de datos
+        existing_admin = collection_admin.find_one({'email': self.email})
+        if existing_admin:
+            return False
+
+        return True
+
+    def check_password(self,password):
+        return check_password_hash(self.password,password) '''
+
+    ''' def toDBCollection(self):
+        hashed = self.verify_password(self.password,self.repeat_password)
+        return {
+            "name": self.name,
+            "lastname": self.last_name,
+            "email": self.email,
+            "password": hashed
+        }
+
+
+    @staticmethod
     def verify_password(password,repeat_password):
         try:
             if password == repeat_password:
