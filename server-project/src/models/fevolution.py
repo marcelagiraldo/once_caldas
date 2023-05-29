@@ -42,7 +42,8 @@ class Evolution:
             "day":self.day,
             "activity_type":self.activity_type,
             "observation":self.observation,
-            "approved":self.approved
+            "approved":self.approved,
+            "active":True
         }
 
         '''
