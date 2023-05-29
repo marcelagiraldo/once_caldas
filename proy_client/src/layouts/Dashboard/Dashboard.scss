@@ -30,12 +30,14 @@
        }
     }
     &-content{
-        min-height: calc(100vh - 75px);
+        min-height: auto;
         background-color: white;
+        display: block;
         
     }
     &-footer{
-        position: block;
+        margin-top: 20px;
+        position: flex;
         width: 100%;
         padding: 0;
     }

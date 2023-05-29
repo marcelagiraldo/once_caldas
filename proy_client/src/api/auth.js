@@ -5,8 +5,8 @@ const { BASE_PATH, API_ROUTES } = ENV;
 export class Auth {
     baseapi = BASE_PATH;
 
-    register = async (data) => {
-        const url = `${BASE_PATH}/${API_ROUTES.REGISTER}`;
+    registerStudents = async (data) => {
+        const url = `${BASE_PATH}/${API_ROUTES.STUDENTS}`;
         console.log(url);
         const params = {
             method: 'POST',
