@@ -10,9 +10,16 @@ import { initialValues, validationSchema } from './LoginForm.form';
 const authController = new Auth();
 
 export const Login = () => {
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log('Received values of form: ', values);
-  };
+    try{
+      setError("");
+      await authController.login(values);
+  } catch (error) {
+      setError("Error en el servidor con validación de formato de evolución");
+  }
+};
+  
   const [error, setError] = useState("");
   const formik = useFormik ({
     initialValues: initialValues(),
@@ -22,7 +29,7 @@ export const Login = () => {
     onSubmit: async (formValue) => {
         try{
             setError("");
-            await authController.register(formValue);
+            await authController.login(formValue);
         } catch (error) {
             setError("Error en el servidor con validación de formato de evolución");
         }
@@ -42,7 +49,7 @@ export const Login = () => {
         onSubmit={formik.handleSubmit}
       >
         <Form.Item
-          name="username"
+          name="email"
           rules={[
             {
               required: true,
@@ -89,5 +96,4 @@ export const Login = () => {
       </Form>
     </div>
   )
-}
-
+};

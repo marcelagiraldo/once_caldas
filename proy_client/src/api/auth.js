@@ -31,7 +31,7 @@ export class Auth {
     };
 
     login = async (data) => {
-        const url = `${this.baseapi}/${API_ROUTES.LOGIN}`;
+        const url = `${BASE_PATH}/${API_ROUTES.LOGIN}`;
         console.log(url);
         const params = {
             method: "POST",
