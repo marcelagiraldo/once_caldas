@@ -3,7 +3,7 @@ from http import HTTPStatus
 from src.models.admin import Admin
 from extensions import jwt,mongo
 from app import db
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, create_refresh_token, get_jwt_identity, jwt_refresh_token_required
 
 if 'admins' not in db.list_collection_names():
     db.create_collection('admins')
@@ -33,8 +33,16 @@ def login():
         return {'error': 'Wrong email or password'}, 401
 
     access_token = create_access_token(identity=str(admin['_id']))
+    refresh_token = create_refresh_token(identity=str(admin['_id']))
 
-    return {'access_token': access_token}, 200
+    return {'access_token': access_token, 'refresh_token': refresh_token}, 200
+''' 
+@auth.route('/refreshAccessToken', methods=['POST'])
+@jwt_refresh_token_required
+def refresh_token():
+    current_user = get_jwt_identity()
+    access_token = create_access_token(identity=current_user)
+    return {'access_token': access_token}, HTTPStatus.OK '''
 
 @auth.route('admin/login', methods=['POST'])
 def login_admin():
