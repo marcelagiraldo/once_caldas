@@ -19,9 +19,12 @@ export const Login = () => {
     try{
       setError("");
       const response = await authController.login(values);
+      const response2 = await authController.refreshAccessToken(values);
       authController.setAccessToken(response.access);
+      authController.setRefreshToken(response2.refresh);
       login(response);
-      window.location.href = '/admin';
+      login(response2);
+      //window.location.href = '/admin';
       console.log(response);
   } catch (error) {
       setError("Error en el servidor con validación de formato de evolución");
