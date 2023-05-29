@@ -27,7 +27,8 @@ export const AuthProvider = (props) => {
     const login = async (accessToken) => {
         try {
             const response = await userController.getMe(accessToken);
-            delete response.new_password;
+            console.log(response);
+            //delete response.new_password;
             // Ya se tienen los datos del usuario para utilizarlos en cualquier vista del frontend
             setUser(response);
             setToken(accessToken);

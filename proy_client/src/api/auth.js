@@ -1,6 +1,7 @@
+import axios from 'axios';
 import {ENV} from '../utils/constants';
 
-const { BASE_PATH, API_ROUTES } = ENV;
+const { BASE_PATH, API_ROUTES, JWT } = ENV;
 
 export class Auth {
     baseapi = BASE_PATH;
@@ -42,7 +43,7 @@ export class Auth {
         };
         console.log(params);
         try{
-            const response = await fetch(url, params);
+            const response = await axios.get(url, params);
             if (!response.ok){
                 throw new Error("Error en la solicitud: " + response.status);
             }
@@ -54,11 +55,12 @@ export class Auth {
         }
     }
 
-    getAccessToken = () => {
-        return localStorage.getItem(ENV.JWT.ACCESS);
+    getAccessToken = async () => {
+        const response = await localStorage.getItem(JWT.ACCESS);
+        return response;
     };
 
     setAccessToken = (token) => {
-        localStorage.setItem(ENV.JWT.ACCESS, token);
+        localStorage.setItem(JWT.ACCESS, token);
     };
 }

@@ -17,9 +17,10 @@ export const Login = () => {
     console.log('Received values of form: ', values);
     try{
       setError("");
-      await authController.login(values);
       const response = await authController.login(values);
-      login(response.access);
+      authController.setAccessToken(response.access);
+      login(response);
+      console.log(response);
   } catch (error) {
       setError("Error en el servidor con validación de formato de evolución");
   }
