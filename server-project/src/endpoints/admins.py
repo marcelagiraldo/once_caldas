@@ -3,6 +3,7 @@ from http import HTTPStatus
 from src.models.admin import Admin
 from flask_jwt_extended import jwt_required,get_jwt_identity
 import jwt
+from bson import ObjectId
 #from extensions import mongodb_client
 from app import db
 
@@ -54,14 +55,15 @@ def get_admins():
 
     return jsonify(admins_list)
 
-''' @admins_blueprint.route('/me', methods=['GET'])
+@admins_blueprint.route('/me', methods=['GET'])
 @jwt_required()
 def get_admin_():
     #data = request.get_json()
     print("estoy aqui")
-    email = get_jwt_identity()
-    print(email)
-    admin_find = collection_admin.find_one({'email': email})
+    id = get_jwt_identity()
+    print(id)
+    admin_find = collection_admin.find_one({'_id': ObjectId(id)})
+    print(admin_find)
     #print(admin_find)
     #admins_list = []
 
@@ -75,20 +77,22 @@ def get_admin_():
             return jsonify(response), HTTPStatus.OK
     else:
         return {"error": "Resource not found"}, HTTPStatus.NOT_FOUND
- '''
 
 
 
-@admins_blueprint.route('/me', methods=['GET'])
-@jwt_required()
+
+''' @admins_blueprint.route('/me', methods=['GET'])
+#@jwt_required()
 def protegido():
     token = request.headers.get('Authorization')
+    print(token)
     if not token:
         return 'Token de autenticación faltante', 401
 
     try:
         # Decodificar el token JWT
-        payload = jwt.decode(token, 'secreto', algorithms=['HS256'])
+        
+        print(payload = jwt.decode(token, 'DEVELOPMENT_SECRET_KEY', algorithms=['HS256']))
         # Obtener los valores dentro del token
         email = payload['email']
 
@@ -100,7 +104,7 @@ def protegido():
     except jwt.ExpiredSignatureError:
         return 'Token expirado', 401
     except jwt.InvalidTokenError:
-        return 'Token inválido', 401
+        return 'Token inválido', 401 '''
 
 
 @admins_blueprint.route('/', methods=['GET','PUT'])
