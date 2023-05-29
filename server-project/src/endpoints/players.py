@@ -1,124 +1,120 @@
-from database import db_connection
 from flask import Blueprint, request,jsonify
 from http import HTTPStatus
-from models.player import Player
+from src.models.player import Player
+from flask_jwt_extended import jwt_required,get_jwt_identity
 from app import db
 
-collection_player = db.players
+if 'players' not in db.list_collection_names():
+    db.create_collection('players')
 
-players = Blueprint("players",__name__,url_prefix="/api/v1/players")
+collection_players = db['players']
 
-@players.post('/')
-def created_player():
-    try:
-        document = request.json.get('document')
-        type_document = request.json.get('type_document')
-        name = request.json.get('name')
-        lastname = request.json.get('lastname')
-        department = request.json.get('department')
-        city = request.json.get('city')
-        age = request.json.get('age')
+players = Blueprint("players",__name__,url_prefix="/api/v1/admin/players")
 
-        player = Player(document, type_document, name, lastname, department, city, age)
+@players.route('/', methods=['GET', 'POST'])
+@jwt_required()
+def functions_player():
+    if request.method == 'POST':
+        try:
+            document = request.json.get('document')
+            type_document = request.json.get('type_document')
+            name = request.json.get('name')
+            lastname = request.json.get('lastname')
+            department = request.json.get('department')
+            city = request.json.get('city')
+            age = request.json.get('age')
 
-        result = collection_player.insert_one(player.toDBCollection())
-        inserted_id = result.inserted_id
+            player = Player(document, type_document, name, lastname, department, city, age,collection_players)
 
-        # Obtener el estudiante insertado
-        inserted_player = collection_player.find_one({'_id': inserted_id})
+            result = collection_players.insert_one(player.toDBCollection())
 
-        response = {
-            'document': inserted_player['document'],
-            'type_document': inserted_player['type_document'],
-            'name': inserted_player['name'],
-            'lastname': inserted_player['lastname'],
-            'department': inserted_player['department'],
-            'city': inserted_player['city'],
-            'age': inserted_player['age']
-        }
-    except Exception as e:
-        return {'Error al crear el jugador'}, HTTPStatus.BAD_REQUEST
+            response = {
+                'document': document,
+                'type_document': type_document,
+                'name': name,
+                'lastname': lastname,
+                'department': department,
+                'city': city,
+                'age': age
+            }
+        except Exception as e:
+            return jsonify({'error': 'Error al crear el estudiante', 'message': str(e)}), HTTPStatus.BAD_REQUEST
 
-    return jsonify(response), HTTPStatus.CREATED
+        return jsonify(response), HTTPStatus.CREATED
+    elif request.method == 'GET':
+        players_find = collection_players.find()
+        players_list = []
 
-@players.get('/')
-def get_players():
-    players_find = collection_player.find()
-    players_list = []
-
-    for player in players_find:
-        players_list.append({
-            'document':player['document'],
-            'type_document':player['type_document'],
-            'name':player['name'],
-            'lastname':player['lastname'],
-            'department':player['department'],
-            'city': player['player'],
-            'age': player['age']
-        })
+        for player in players_find:
+            players_list.append({
+                'document':player['document'],
+                'type_document':player['type_document'],
+                'name':player['name'],
+                'lastname':player['lastname'],
+                'department':player['department'],
+                'city': player['city'],
+                'age': player['age']
+            })
 
     return jsonify(players_list)
 
-@players.get('/<document_player>')
-def get_player(document_player):
-    player_find = collection_player.find_one({'document':document_player})
-    if player_find:
-        response = {
-            'document':player_find['document'],
-            'type_document':player_find['type_document'],
-            'name':player_find['name'],
-            'lastname':player_find['lastname'],
-            'department':player_find['department'],
-            'city':player_find['city'],
-            'age':player_find['age']
-        }
-        return jsonify(response),HTTPStatus.OK
-    else:
-        return {"error":"Resource not found"}, HTTPStatus.NOT_FOUND
 
-@players.put('/<document_player>')
-def update_player(document_player):
-    try:
-        player_put = collection_player.find_one({'document': document_player})
-        if not player_put:
-            return {"error": "Resource not found"}, HTTPStatus.NOT_FOUND
+@players.route('/<document>', methods=['GET', 'PUT','DELETE'])
+@jwt_required()
+def funct_player(document):
+    if request.method == 'GET':
+        player_find = collection_players.find_one({'document':document})
+        if player_find:
+            response = {
+                'document':player_find['document'],
+                'type_document':player_find['type_document'],
+                'name':player_find['name'],
+                'lastname':player_find['lastname'],
+                'department':player_find['department'],
+                'city':player_find['city'],
+                'age':player_find['age']
+            }
+            return jsonify(response),HTTPStatus.OK
+        else:
+            return {"error":"Resource not found"}, HTTPStatus.NOT_FOUND
+    elif request.method == 'PUT':
+        try:
+            player_put = collection_players.find_one({'document': document})
+            if not player_put:
+                return {"error": "Resource not found"}, HTTPStatus.NOT_FOUND
 
-        type_document = request.json.get('type_document', player_put['type_document'])
-        name = request.json.get('name', player_put['name'])
-        lastname = request.json.get('lastname', player_put['lastname']),
-        department = request.json.get('department', player_put['department']),
-        city = request.json.get('city', player_put['city']),
-        age = request.json.get('age', player_put['age'])
+            type_document = request.json.get('type_document', player_put['type_document'])
+            name = request.json.get('name', player_put['name'])
+            lastname = request.json.get('lastname', player_put['lastname'])
+            department = request.json.get('department', player_put['department'])
+            city = request.json.get('city', player_put['city'])
+            age = request.json.get('age', player_put['age'])
+            player = Player(document, type_document, name, lastname, department, city, age,collection_players).toDBCollection()
+            collection_players.update_one(
+                {'document': document},
+                {'$set': {'document':document,'name':name,'lastname':lastname,'type_document':type_document,'department':department,'city':city,'age':age}}
+            )
 
-        player_put = collection_player.update_one(
-            {'document': document_player},
-            {'$set': Player(document_player, type_document, name, lastname, department, city, age).toDBCollection()}
-        )
+            response = {
+                'document': document,
+                'type_document': type_document,
+                'name': name,
+                'lastname': lastname,
+                'department': department,
+                'city': city,
+                'age': age
+            }
 
-        # Consultar el estudiante actualizado
-        updated_player = collection_player.find_one({'document': document_player})
+        except Exception as e:
+            return jsonify({'error': 'Error al crear el estudiante', 'message': str(e)}), HTTPStatus.BAD_REQUEST
 
-        response = {
-            'document': updated_player['document'],
-            'type_document': updated_player['type_document'],
-            'name': updated_player['name'],
-            'lastname': updated_player['lastname'],
-            'department': updated_player['department'],
-            'city': updated_player['city'],
-            'age': updated_player['age']
-        }
+        return jsonify(response), HTTPStatus.OK
+    elif request.method == 'DELETE':
+        player = collection_players.find_one({'document': document})
+        if not player:
+            return {"error": "Player not found"}, HTTPStatus.NOT_FOUND
 
-    except Exception as e:
-        print('Error:', e)
-        return 'El jugador no pudo ser actualizado', HTTPStatus.BAD_REQUEST
+        # Actualizar el campo de estado para desactivar el administrador
+        collection_players.update_one({'document': document}, {'$set': {'active': False}})
 
-    return jsonify(response), HTTPStatus.OK
-
-@players.delete('/<document_player>')
-def delete_player(document_player):
-    try:
-        collection_player.delete_one({'document':document_player})
-    except Exception as e:
-        return print("Error al eliminar el jugador",e),HTTPStatus.BAD_REQUEST
-
-    return "data:''",HTTPStatus.NO_CONTENT
+        return {"message": "Student deactivated"}, HTTPStatus.OK

@@ -74,7 +74,7 @@ class Student:
         return True, ''
 
     @staticmethod
-    def validate_document(document):
+    def validate_document(collection,document):
         document_pattern = r'^\d+$'
 
         if not document:
@@ -85,6 +85,10 @@ class Student:
 
         elif not re.match(document_pattern, document):
             return False, 'document contains letters or special characters'
+
+        existing_admin = collection.find_one({'document': document})
+        if existing_admin:
+            return False, 'Document already exists'
 
         return True, ''
 
@@ -109,7 +113,7 @@ class Student:
         if not valid_lastname:
             return None, lastname_error
         #validated document
-        valid_document, document_error = self.validate_document(self.document)
+        valid_document, document_error = self.validate_document(self.collection,self.document)
         if not valid_document:
             return None, document_error
         #Crear hash de password
