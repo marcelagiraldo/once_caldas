@@ -4,11 +4,20 @@ import { Button, Form, Input } from 'antd';
 import './Login.scss';
 import {FirstTop} from "../../../components/TopComponents/FirstTop/FirstTop"
 import { Auth } from '../../../api/auth';
-import { useFormik } from 'formik';
-import { initialValues, validationSchema } from './LoginForm.form';
+import { Formik, useFormik } from 'formik';
 import { useAuth } from '../../../hooks';
+import * as Yup from "yup";
 
 const authController = new Auth();
+
+function validationSchema() {
+  return Yup.object({
+    email: Yup.string()
+      .email("El correo no es válido")
+      .required("Este campo es requerido"),
+    password: Yup.string().required("Este campo es requerido"),
+  });
+}
 
 export const Login = () => {
   const {login} = useAuth();
@@ -20,7 +29,7 @@ export const Login = () => {
       const response = await authController.login(values);
       authController.setAccessToken(response.access);
       login(response);
-      window.location.href = '/admin';
+      window.location.href = '/admin/';
       console.log(response);
   } catch (error) {
       setError("Error en el servidor con validación de formato de evolución");
@@ -28,81 +37,77 @@ export const Login = () => {
 };
   
   const [error, setError] = useState("");
-  const formik = useFormik ({
-    initialValues: initialValues(),
-    validationSchema: validationSchema(),
-    validateOnChange: false,
-    validateOnBlur: false,
-    onSubmit: async (formValue) => {
-        try{
-            //setError("");
-            const response = await authController.login(formValue);
-            login(response.access);
-            console.log(response);
-        } catch (error) {
-            setError("Error en el servidor con validación de formato de evolución");
-        }
-    },
-});
   return (
     <div>
       <FirstTop addtitle="Inicio Sesion"/>
-      <Form
-        name="normal_login"
-        layout="vertical"
-        className="login-form"
-        initialValues={{
-          remember: true,
-        }}
+      <Formik
+      initialValues={{ email: "", password: "" }}
+      validationSchema={validationSchema()}
+      onFinish={onFinish}
+      onSubmit={async (values, { setSubmitting }) => {
+        console.log("AQUI ESTOY");
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+        }, 400);
+        try {
+          console.log("aqui estoy");
+          await authController.login(values);
+          console.log("aqui llego");
+        } catch (error) {
+          console.log(
+            "Error en el servidor con validación de formato de evolución" +
+              error
+          );
+      }
+      
+    }}
+    >
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        isSubmitting,
+        /* and other goodies */
+      }) => (
+        <Form 
         onFinish={onFinish}
-        onSubmit={formik.handleSubmit}
-      >
-        <Form.Item
-          name="email"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your Username!',
-            },
-          ]}
-        >
-          {/* <label className='my-label'>Correo electrónico</label> */}
-          <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="cédula/correo electrónico" 
-                        autoComplete='email' 
-                        onBlur={formik.handleBlur}
-                        onChange={formik.handleChange}
-                        value={formik.values.email}
-                        error={formik.values.email}
-          />
-        </Form.Item>
-        <Form.Item
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your Password!',
-            },
-          ]}
-        >
-          {/* <label className='my-label'>Contraseña</label> */}
+        onSubmit={handleSubmit} className="login-form">
           <Input
+            className="formInput"
             prefix={<LockOutlined className="site-form-item-icon" />}
-            type="password"
-            placeholder="Contraseña"
-            autoComplete='contraseña' 
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.contraseña}
-            error={formik.values.contraseña}
+            type="email"
+            placeholder="Correo Electrónico"
+            name="email"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.email}
           />
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit" className="login-form-button" loading={formik.isSubmitting}>
+          {errors.email && touched.email && errors.email}
+          <Input
+            className="formInput"
+            prefix={<UserOutlined className="site-form-item-icon" />}
+            placeholder="Contraseña"
+            type="password"
+            name="password"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.password}
+          />
+          {errors.password && touched.password && errors.password}
+          <Button
+            disabled={isSubmitting}
+            htmlType="submit"
+            className="login-form-button"
+          >
             Ingresar
           </Button>
-        </Form.Item>
-        {error && <p className='form-evolution__error'>{error}</p>}
-      </Form>
+        </Form>
+      )}
+    </Formik>
     </div>
   )
 };

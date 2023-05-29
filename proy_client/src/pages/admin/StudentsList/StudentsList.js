@@ -5,8 +5,11 @@ import { DashboardTop } from "../../../components/TopComponents/DashboardTop/Das
 import "./StudentsList.scss"
 import { Button, Col, Input } from "antd";
 import { FileSearchOutlined, SearchOutlined } from "@ant-design/icons";
+import { dataNotNull  } from "../../../api/Students"
+
 
 export const StudentsList = () => {
+  console.log(dataNotNull());
   return (
     <div>
         <DashboardTop addtitle="ESTUDIANTES" userName="Lina Maria Montereal Mesa" />

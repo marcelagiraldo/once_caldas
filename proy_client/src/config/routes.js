@@ -11,7 +11,6 @@ import { Dashboard } from '../layouts/Dashboard/Dashboard';
 import { StudentsList } from '../pages/admin/StudentsList/StudentsList';
 import { StudentsRegister } from '../pages/admin/StudentsRegister/StudentsRegister';
 import { PlayersList } from "../pages/admin/PlayersList/PlayersList";
-import { PlayersRegister } from "../pages/admin/PlayersRegister/PlayersRegister";
 
 
 
@@ -20,8 +19,7 @@ const AdminRoutes = [
     {path: '/admin/admin-register', component: AdminRegister,layout: LayoutGeneral},
     {path: '/admin/students', component: StudentsList,layout: Dashboard},
     {path: '/admin/students-register', component: StudentsRegister,layout:Dashboard},
-    {path: '/admin/Players', component: PlayersList,layout: Dashboard},
-    {path: '/admin/Players-register', component: PlayersRegister,layout:Dashboard}
+    {path: '/admin/Players', component: PlayersList,layout: Dashboard}
 
 ];
 const GeneralRoutes = [

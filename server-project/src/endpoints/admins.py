@@ -176,13 +176,6 @@ def get_admin():
             return jsonify({'error': 'Error al crear el admin', 'message': str(e)}), HTTPStatus.BAD_REQUEST
 
         return jsonify(response), HTTPStatus.OK
-    elif request.method == 'DELETE':
-        try:
-            collection_admin.delete_one({'email':email})
-        except Exception as e:
-            return print("Error al eliminar el estudiante",e),HTTPStatus.BAD_REQUEST
-
-        return "data:[]",HTTPStatus.NO_CONTENT
 
 @admins_blueprint.route('/<email>', methods=['DELETE'])
 def delete_user(email):

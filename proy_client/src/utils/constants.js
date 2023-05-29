@@ -5,7 +5,7 @@ export const ENV = {
     BASE_PATH: `http://${SERVER_IP}/api/${API_VERSION}`,
     API_ROUTES: {
         REGISTER: 'auth/register',
-        LOGIN: 'auth/login',
+        LOGIN: 'auth/admin/login',
         ADMIN: 'admins',
         STUDENTS: 'students',
         USER_ME: "admins/me",
