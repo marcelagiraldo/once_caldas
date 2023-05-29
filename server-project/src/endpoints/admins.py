@@ -29,8 +29,6 @@ def created_admin():
         else:
             result = collection_admin.insert_one(admin_data)
 
-        print('esto es result: ',result)
-
         inserted_id = result.inserted_id
         inserted_admin = collection_admin.find_one({'_id': inserted_id})
         response = {
@@ -122,13 +120,6 @@ def get_admin():
             return jsonify({'error': 'Error al crear el admin', 'message': str(e)}), HTTPStatus.BAD_REQUEST
 
         return jsonify(response), HTTPStatus.OK
-    elif request.method == 'DELETE':
-        try:
-            collection_admin.delete_one({'email':email})
-        except Exception as e:
-            return print("Error al eliminar el estudiante",e),HTTPStatus.BAD_REQUEST
-
-        return "data:[]",HTTPStatus.NO_CONTENT
 
 @admins_blueprint.route('/<email>', methods=['DELETE'])
 def delete_user(email):

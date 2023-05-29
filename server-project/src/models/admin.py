@@ -11,12 +11,6 @@ class Admin:
         self.repeat_password = repeat_password
         self.collection = collection
 
-        ''' if not self.validate_password():
-            raise AssertionError('Passwords do not match')
-
-        if not self.validate_email(collection_admin,email):
-            raise AssertionError('Passwords do not match') '''
-
     @staticmethod
     def hash_password(password):
         if not password:
@@ -112,7 +106,8 @@ class Admin:
             "lastname": self.last_name,
             "email": self.email,
             "password": hashed_password,
-            "active":True
+            "active":True,
+            "role":"admin"
         }, None
 
 

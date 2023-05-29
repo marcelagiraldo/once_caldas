@@ -1,10 +1,8 @@
 from database import db_connection
 from flask import Blueprint, request,jsonify
 from http import HTTPStatus
-
 from models.player import Player
-
-db = db_connection()
+from app import db
 
 collection_player = db.players
 
@@ -77,7 +75,7 @@ def get_player(document_player):
         return jsonify(response),HTTPStatus.OK
     else:
         return {"error":"Resource not found"}, HTTPStatus.NOT_FOUND
-    
+
 @players.put('/<document_player>')
 def update_player(document_player):
     try:

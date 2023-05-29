@@ -24,6 +24,8 @@ from src.endpoints.admins import admins_blueprint
 app.register_blueprint(admins_blueprint)
 from src.endpoints.auth import auth
 app.register_blueprint(auth)
+from src.endpoints.students import students
+app.register_blueprint(students)
 
 if __name__ == "__main__":
  app.run(debug=True)
