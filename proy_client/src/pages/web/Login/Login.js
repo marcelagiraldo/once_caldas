@@ -7,6 +7,7 @@ import { Auth } from '../../../api/auth';
 import { useFormik } from 'formik';
 import { initialValues, validationSchema } from './LoginForm.form';
 import { useAuth } from '../../../hooks';
+import { Route, Routes } from 'react-router-dom';
 
 const authController = new Auth();
 
@@ -20,6 +21,7 @@ export const Login = () => {
       const response = await authController.login(values);
       authController.setAccessToken(response.access);
       login(response);
+      window.location.href = '/admin';
       console.log(response);
   } catch (error) {
       setError("Error en el servidor con validación de formato de evolución");

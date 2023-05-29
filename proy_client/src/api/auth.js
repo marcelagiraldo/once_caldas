@@ -43,7 +43,7 @@ export class Auth {
         };
         console.log(params);
         try{
-            const response = await axios.get(url, params);
+            const response = await fetch(url, params);
             if (!response.ok){
                 throw new Error("Error en la solicitud: " + response.status);
             }
