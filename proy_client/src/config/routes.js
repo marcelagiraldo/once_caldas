@@ -11,11 +11,13 @@ import { Dashboard } from '../layouts/Dashboard/Dashboard';
 import { StudentsList } from '../pages/admin/StudentsList/StudentsList';
 import { StudentsRegister } from '../pages/admin/StudentsRegister/StudentsRegister';
 
+
+
 const AdminRoutes = [
     {path: '/admin', component: Admin, layout: Dashboard},
     {path: '/admin/admin-register', component: AdminRegister,layout: LayoutGeneral},
     {path: '/admin/students', component: StudentsList,layout: Dashboard},
-    {path: '/admin/students-register', component: StudentsRegister,layout:Dashboard}
+    {path: '/admin/students/register', component: StudentsRegister,layout:Dashboard}
 
 ];
 const GeneralRoutes = [

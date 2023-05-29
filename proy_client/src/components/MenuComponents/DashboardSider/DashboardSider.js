@@ -10,13 +10,13 @@ export const DashboardSider = (props) => {
     const location = useLocation();
 
     const menuItems = [
-        { key:"jugadores",icon:<HomeOutlined/>, label: "Gestion Jugadores",subMenu:[
-            {key:"jugadores/lista",icon:<TeamOutlined/>,label:"Lista jugadores"},
-            {key:"jugadores/new",icon:<TeamOutlined/>,label:"Nuevo jugador"}
+        { key:"players",icon:<HomeOutlined/>, label: "Gestion jugadores",subMenu:[
+            {key:"players/list",icon:<TeamOutlined/>,label:"Lista jugadores"},
+            {key:"players/new",icon:<TeamOutlined/>,label:"Nuevo jugador"}
         ]},
-        { key:"estudiantes",icon:<HomeOutlined/>, label: "Gestion estudiantes",subMenu:[
-            {key:"estudiantes/lista",icon:<TeamOutlined/>,label:"Lista estudiantes"},
-            {key:"estudiantes/new",icon:<TeamOutlined/>,label:"Nuevo estudiante"}
+        { key:"students",icon:<HomeOutlined/>, label: "Gestion estudiantes",subMenu:[
+            {key:"students",icon:<TeamOutlined/>,label:"Lista estudiantes"},
+            {key:"students/new",icon:<TeamOutlined/>,label:"Nuevo estudiante"}
         ]},
         {key:"admin-register",icon:<HomeOutlined/>, label: "Admin"}
     ];
