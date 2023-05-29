@@ -22,7 +22,14 @@ def login():
     password = data.get('password')
 
     admin = collection_admin.find_one({'email': email})
+    print(email)
     print(admin)
+    
+    if not admin:
+        print("Paila admin")
+    
+    if not Admin(admin['name'],admin['lastname'],admin['email'],admin['password'],admin['password']).check_password(password):
+        print("no coinciden contraseñas")
     
     if not admin or not Admin(admin['name'],admin['lastname'],admin['email'],admin['password'],admin['password']).check_password(password):
         return {'error': 'Wrong email or password'}, 401
