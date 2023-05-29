@@ -1,8 +1,8 @@
 from flask import Blueprint, request,jsonify
 from http import HTTPStatus
 from src.models.student import Student
-from flask_jwt_extended import jwt_required,get_jwt_identity
-from src.app import db
+from flask_jwt_extended import jwt_required
+from app import db
 
 if 'students' not in db.list_collection_names():
     db.create_collection('students')
