@@ -2,7 +2,6 @@ from flask import Blueprint, request,jsonify
 from http import HTTPStatus
 from src.models.admin import Admin
 from flask_jwt_extended import jwt_required,get_jwt_identity
-import jwt
 from bson import ObjectId
 #from extensions import mongodb_client
 from app import db
@@ -22,8 +21,13 @@ def created_admin():
         email = request.json.get('email')
         password = request.json.get('password')
         repeat_password = request.json.get('repeat_password')
-        admin = Admin(name, lastname, email, password, repeat_password)
-        result = collection_admin.insert_one(admin.toDBCollection())
+        admin = Admin(name, lastname, email, password, repeat_password,collection_admin)
+
+        admin_data, error = admin.toDBCollection()
+        if error:
+            print("Error:", error)
+        else:
+            result = collection_admin.insert_one(admin_data)
 
         inserted_id = result.inserted_id
         inserted_admin = collection_admin.find_one({'_id': inserted_id})
@@ -110,9 +114,12 @@ def protegido():
 @admins_blueprint.route('/', methods=['GET','PUT'])
 @jwt_required()
 def get_admin():
-    email = get_jwt_identity()
+    id = get_jwt_identity()
+    print('email: ', id)
+    admin_data = collection_admin.find_one({"_id": ObjectId(id)})
+    print('admin_data: ', admin_data)
     if request.method == 'GET':
-        admin_find = collection_admin.find_one({'email': email})
+        admin_find = collection_admin.find_one({'email': admin_data['email']})
         if admin_find:
             response = {
                 'name': admin_find['name'],
@@ -125,19 +132,33 @@ def get_admin():
             return {"error": "Resource not found"}, HTTPStatus.NOT_FOUND
     elif request.method == 'PUT':
         try:
-            admin_put = collection_admin.find_one({'email': email})
+            print("----------------------aqui toy-------------------")
+            admin_put = collection_admin.find_one({"_id": ObjectId(id)})
             if not admin_put:
                 return {"error": "Resource not found"}, HTTPStatus.NOT_FOUND
 
             name = request.json.get('name', admin_put['name'])
+            print('name:',name)
             lastname = request.json.get('lastname', admin_put['lastname'])
+            print('lastname:',lastname)
             email = request.json.get('email', admin_put['email'])
+            print('email:',email)
             password = request.json.get('password', admin_put['password'])
+            print('password:',password)
             repeat_password = request.json.get('repeat_password', admin_put['password'])
+            print('repeat_password:',repeat_password)
+
+            admin = Admin(name, lastname, email, password, repeat_password, collection_admin).toDBCollection()
+            print('admin------------',admin)
 
             collection_admin.update_one(
-                {'email': email},
-                {'$set': Admin(name, lastname, email, password, repeat_password).toDBCollection()}
+                {'email': id},
+                {'$set': {
+                    'name': name,
+                    'lastname': lastname,
+                    'email': email,
+                    'password': password
+                }}
             )
             updated_admin = collection_admin.find_one({'email': email})
             response = {
@@ -149,22 +170,17 @@ def get_admin():
 
         except Exception as e:
             print('Error:', e)
-            return 'El admin no pudo ser actualizado', HTTPStatus.BAD_REQUEST
+            return jsonify({'error': 'Error al crear el admin', 'message': str(e)}), HTTPStatus.BAD_REQUEST
 
         return jsonify(response), HTTPStatus.OK
-    elif request.method == 'DELETE':
-        try:
-            collection_admin.delete_one({'email':email})
-        except Exception as e:
-            return print("Error al eliminar el estudiante",e),HTTPStatus.BAD_REQUEST
-
-        return "data:[]",HTTPStatus.NO_CONTENT
 
 @admins_blueprint.route('/<email>', methods=['DELETE'])
 def delete_user(email):
-    try:
-        collection_admin.delete_one({'email':email})
-    except Exception as e:
-        return print("Error al eliminar el estudiante",e),HTTPStatus.BAD_REQUEST
+    admin = collection_admin.find_one({'email': email})
+    if not admin:
+        return {"error": "Admin not found"}, HTTPStatus.NOT_FOUND
 
-    return "data:[]",HTTPStatus.NO_CONTENT
+    # Actualizar el campo de estado para desactivar el administrador
+    collection_admin.update_one({'email': email}, {'$set': {'active': False}})
+
+    return {"message": "Admin deactivated"}, HTTPStatus.OK
