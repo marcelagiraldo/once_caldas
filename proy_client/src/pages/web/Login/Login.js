@@ -7,7 +7,6 @@ import { Auth } from '../../../api/auth';
 import { useFormik } from 'formik';
 import { initialValues, validationSchema } from './LoginForm.form';
 import { useAuth } from '../../../hooks';
-import { Route, Routes } from 'react-router-dom';
 
 const authController = new Auth();
 

@@ -11,7 +11,7 @@ export const GetAdmin = () => {
 
   const fetchData = async () => {
     try {
-      const url = `${BASE_PATH}/${API_ROUTES.ADMIN}`;
+      const url = `${BASE_PATH}/${API_ROUTES.ADMIN}/me`;
       console.log(url);
       const response = await axios.get(url);
       setData(response.data);

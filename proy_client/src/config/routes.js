@@ -10,6 +10,8 @@ import { NotFound } from "../pages/web/NotFound/NotFound";
 import { Dashboard } from '../layouts/Dashboard/Dashboard';
 import { StudentsList } from '../pages/admin/StudentsList/StudentsList';
 import { StudentsRegister } from '../pages/admin/StudentsRegister/StudentsRegister';
+import { PlayersList } from "../pages/admin/PlayersList/PlayersList";
+import { PlayersRegister } from "../pages/admin/PlayersRegister/PlayersRegister";
 
 
 
@@ -17,12 +19,14 @@ const AdminRoutes = [
     {path: '/admin', component: Admin, layout: Dashboard},
     {path: '/admin/admin-register', component: AdminRegister,layout: LayoutGeneral},
     {path: '/admin/students', component: StudentsList,layout: Dashboard},
-    {path: '/admin/students/register', component: StudentsRegister,layout:Dashboard}
+    {path: '/admin/students-register', component: StudentsRegister,layout:Dashboard},
+    {path: '/admin/Players', component: PlayersList,layout: Dashboard},
+    {path: '/admin/Players-register', component: PlayersRegister,layout:Dashboard}
 
 ];
 const GeneralRoutes = [
     {path: '/',component: Login,layout: LayoutGeneral},
-    {path: '*',component: NotFound,layout: LayoutGeneral},
+    {path: '*',component: NotFound,layout: Dashboard},
     {path: 'change-password',component: ChangePassword,layout: LayoutGeneral},
     {path: 'f-evolution',component: Fevolution,layout: LayoutMenu}
 

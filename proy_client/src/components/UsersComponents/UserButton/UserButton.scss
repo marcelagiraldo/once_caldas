@@ -1,6 +1,9 @@
 @import '../../../scss/variables';
 
 .UserButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: white;
     font-family: BonnetGrotesqueNr-Regular;
     color: black;

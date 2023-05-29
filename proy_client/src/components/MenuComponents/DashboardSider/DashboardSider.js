@@ -1,29 +1,28 @@
 import React from 'react';
 import {  HomeOutlined, TeamOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import "./DashboardSider.scss"
 
 export const DashboardSider = (props) => {
     const {Sider} = Layout;
-    const navigate = useNavigate();
     const location = useLocation();
 
     const menuItems = [
         { key:"players",icon:<HomeOutlined/>, label: "Gestion jugadores",subMenu:[
-            {key:"players/list",icon:<TeamOutlined/>,label:"Lista jugadores"},
-            {key:"players/new",icon:<TeamOutlined/>,label:"Nuevo jugador"}
+            {key:"players",icon:<TeamOutlined/>,label:"Lista jugadores"},
+            {key:"players-register",icon:<TeamOutlined/>,label:"Nuevo jugador"}
         ]},
         { key:"students",icon:<HomeOutlined/>, label: "Gestion estudiantes",subMenu:[
             {key:"students",icon:<TeamOutlined/>,label:"Lista estudiantes"},
-            {key:"students/new",icon:<TeamOutlined/>,label:"Nuevo estudiante"}
+            {key:"students-register",icon:<TeamOutlined/>,label:"Nuevo estudiante"}
         ]},
         {key:"admin-register",icon:<HomeOutlined/>, label: "Admin"}
     ];
     const navigateTo = (e) => {
         const path = e.key;
         console.log(path);
-        navigate(path);
+        window.location.replace(path);
     };
     const itemRender = (item,index)=>{
         const {icon,label,subMenu} = item;
