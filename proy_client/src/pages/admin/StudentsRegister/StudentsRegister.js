@@ -29,7 +29,7 @@ export const StudentsRegister = () => {
 return (
     <div>
         <DashboardTop addtitle="ESTUDIANTES" userName="Lina Maria Montereal Mesa" />
-        <form onSubmit={formik.handleSubmit}>
+        <formmik onSubmit={formik.handleSubmit}>
         <div className="FirstStudentsRegister">
             <Col>
             <h1 className="textRegister">Nombres :</h1>
@@ -98,7 +98,7 @@ return (
         <div className="SButton">
             <SaveButton type="submit"  handleSubmit={formik.handleSubmit}/>
         </div>
-        </form>
+        </formmik>
     </div>
     );
 };

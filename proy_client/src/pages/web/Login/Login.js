@@ -4,7 +4,7 @@ import { Button, Form, Input } from 'antd';
 import './Login.scss';
 import {FirstTop} from "../../../components/TopComponents/FirstTop/FirstTop"
 import { Auth } from '../../../api/auth';
-import { useFormik } from 'formik';
+import { Formik, useFormik } from 'formik';
 import { initialValues, validationSchema } from './LoginForm.form';
 
 const authController = new Auth();
@@ -31,6 +31,7 @@ export const Login = () => {
   return (
     <div>
       <FirstTop addtitle="Inicio Sesion"/>
+      <Formik>
       <Form
         name="normal_login"
         layout="vertical"
@@ -42,7 +43,7 @@ export const Login = () => {
         onSubmit={formik.handleSubmit}
       >
         <Form.Item
-          name="username"
+          name="email"
           rules={[
             {
               required: true,
@@ -87,6 +88,7 @@ export const Login = () => {
         </Form.Item>
         {error && <p className='form-evolution__error'>{error}</p>}
       </Form>
+      </Formik>
     </div>
   )
 }
