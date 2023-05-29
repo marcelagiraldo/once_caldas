@@ -22,8 +22,6 @@ def login():
     password = data.get('password')
 
     admin = collection_admin.find_one({'email': email})
-    print(email)
-    print(admin)
     
     if not admin:
         print("Paila admin")
