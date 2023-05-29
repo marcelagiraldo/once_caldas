@@ -15,7 +15,7 @@ export class User {
     console.log(typeof accessTokenString);
     console.log(accessTokenString);
     try {
-      const response = await axios.get(`${ENV.BASE_PATH}/${USER_ME_ROUTE}`, {
+      const response = await fetch(`${ENV.BASE_PATH}/${USER_ME_ROUTE}`, {
         headers: {
           "Content-Type": CONTENT_TYPE_JSON,
           Authorization: `Bearer ${accessTokenString}`, // Usar la cadena de texto convertida
