@@ -1,21 +1,29 @@
 import React from "react";
 import { DashboardTop } from "../../../components/TopComponents/DashboardTop/DashboardTop";
 import "./StudentsRegister.scss";
-import { Col, Input } from "antd";
+import { Col, Form, Input } from "antd";
 import { SaveButton } from "../../../components/UsersComponents/SaveButton/SaveButton";
 import { Auth } from "../../../api/auth"; 
-import { useFormik } from 'formik';
+import { Formik, useFormik } from 'formik';
+import * as Yup from "yup";
 
+
+
+function validationSchema() {
+    return Yup.object({
+      email: Yup.string()
+        .email("El correo no es válido")
+        .required("Este campo es requerido"),
+      apellidos: Yup.string().required("Este campo es requerido"),
+      nombres: Yup.string().required("Este campo es requerido"),
+      codigo: Yup.number().required("Este campo es requerido"),
+      semestre: Yup.number().required("Este campo es requerido"),
+        
+    });
+  }
 
 export const StudentsRegister = () => {
-    const formik = useFormik({
-    initialValues: {
-        nombres: '',
-        apellidos: '',
-        codigo: '',
-        semestre: ''
-    },
-    onSubmit: async (values) => {
+    const onFinish = async (values) => {
         try {
         await Auth.registerStudents(values);
         // Realiza alguna acción adicional después de registrar el estudiante
@@ -23,13 +31,32 @@ export const StudentsRegister = () => {
         console.error(error);
         // Maneja el error de alguna forma apropiada
         }
-    },
-});
+    };
 
 return (
     <div>
         <DashboardTop addtitle="ESTUDIANTES" userName="Lina Maria Montereal Mesa" />
-        <formmik onSubmit={formik.handleSubmit}>
+        <Formik 
+        initialValues= {{
+            nombres: '',
+            apellidos: '',
+            email: '',
+            semestre: ''
+        }}
+        validationSchema={validationSchema()}
+        onFinish={onFinish}
+        >
+        {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isSubmitting,
+            /* and other goodies */
+        }) => (
+        <Form onFinish={onFinish}> 
         <div className="FirstStudentsRegister">
             <Col>
             <h1 className="textRegister">Nombres :</h1>
@@ -38,8 +65,8 @@ return (
             <Input
                 className="inputStudent"
                 name="nombres"
-                value={formik.values.nombres}
-                onChange={formik.handleChange}
+                value={values.nombres}
+                onChange={handleChange}
             />
             </Col>
         </div>
@@ -51,8 +78,8 @@ return (
             <Input
                 className="inputStudent"
                 name="apellidos"
-                value={formik.values.apellidos}
-                onChange={formik.handleChange}
+                value={values.apellidos}
+                onChange={handleChange}
             />
             </Col>
         </div>
@@ -64,8 +91,8 @@ return (
             <Input
                 className="inputStudentC"
                 name="correo"
-                value={formik.values.correo}
-                onChange={formik.handleChange}
+                value={values.correo}
+                onChange={handleChange}
             />
             </Col>
         </div>
@@ -77,8 +104,8 @@ return (
             <Input
                 className="inputStudent"
                 name="Documento"
-                value={formik.values.Documento}
-                onChange={formik.handleChange}
+                value={values.Documento}
+                onChange={handleChange}
             />
             </Col>
         </div>
@@ -90,15 +117,17 @@ return (
             <Input
                 className="inputStudent"
                 name="semestre"
-                value={formik.values.semestre}
-                onChange={formik.handleChange}
+                value={values.semestre}
+                onChange={handleChange}
             />
             </Col>
         </div>
         <div className="SButton">
-            <SaveButton type="submit"  handleSubmit={formik.handleSubmit}/>
+            <SaveButton type="submit"  handleSubmit={handleSubmit}/>
         </div>
-        </formmik>
+        </Form>
+        )}
+        </Formik>
     </div>
     );
 };

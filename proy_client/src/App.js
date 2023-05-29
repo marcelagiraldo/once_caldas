@@ -2,7 +2,7 @@
 import React from 'react';
 import './App.scss'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import AllRoutesProject from './config/routes'
+import AllRoutesProject from './config/routes';
 
 const App = () => {
   return (

@@ -1,8 +1,9 @@
 from flask import Blueprint, request,jsonify
 from http import HTTPStatus
 from src.models.student import Student
-from flask_jwt_extended import jwt_required
-from app import db
+from flask_jwt_extended import jwt_required,get_jwt_identity
+from src.app import db
+from src.emails import mensaje
 
 if 'students' not in db.list_collection_names():
     db.create_collection('students')
@@ -38,7 +39,7 @@ def created_user():
         }
     except Exception as e:
         return {'Error al crear el estudiante'}, HTTPStatus.BAD_REQUEST
-
+    mensaje()
     return jsonify(response), HTTPStatus.CREATED
 
 @students.get('/todos')
