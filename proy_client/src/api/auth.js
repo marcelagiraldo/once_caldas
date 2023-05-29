@@ -53,4 +53,12 @@ export class Auth {
             throw error;
         }
     }
+
+    getAccessToken = () => {
+        return localStorage.getItem(ENV.JWT.ACCESS);
+    };
+
+    setAccessToken = (token) => {
+        localStorage.setItem(ENV.JWT.ACCESS, token);
+    };
 }

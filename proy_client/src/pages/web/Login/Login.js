@@ -6,15 +6,20 @@ import {FirstTop} from "../../../components/TopComponents/FirstTop/FirstTop"
 import { Auth } from '../../../api/auth';
 import { useFormik } from 'formik';
 import { initialValues, validationSchema } from './LoginForm.form';
+import { useAuth } from '../../../hooks';
 
 const authController = new Auth();
 
 export const Login = () => {
+  const {login} = useAuth();
+
   const onFinish = async (values) => {
     console.log('Received values of form: ', values);
     try{
       setError("");
       await authController.login(values);
+      const response = await authController.login(values);
+      login(response.access);
   } catch (error) {
       setError("Error en el servidor con validación de formato de evolución");
   }
@@ -28,8 +33,10 @@ export const Login = () => {
     validateOnBlur: false,
     onSubmit: async (formValue) => {
         try{
-            setError("");
-            await authController.login(formValue);
+            //setError("");
+            const response = await authController.login(formValue);
+            login(response.access);
+            console.log(response);
         } catch (error) {
             setError("Error en el servidor con validación de formato de evolución");
         }
