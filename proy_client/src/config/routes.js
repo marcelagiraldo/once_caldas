@@ -1,18 +1,32 @@
 /* components > Layouts > Pages > routes */
-import { LayoutGenreal } from "../layouts/GeneralLayout/LayoutGerenal";
+import { LayoutGeneral } from "../layouts/LayoutGeneral/LayoutGeneral";
+import { LayoutMenu } from "../layouts/LayoutMenu/LayoutMenu";
 import { Admin } from "../pages/admin/Admin";
-import  SignIn  from "../pages/SIgIn/SignIn";
+import  {Login}  from "../pages/web/Login/Login";
+import {AdminRegister} from "../pages/admin/AdminRegister/AdminRegister";
+import {ChangePassword} from "../pages/admin/ChangePassword/ChangePassword";
+import {Fevolution} from "../pages/web/Fevolution/Fevolution";
 import { Contact } from "../pages/Contact";
-import { Home } from "../pages/Home";
-import { NotFound } from "../pages/NotFound/NotFound";
+import { NotFound } from "../pages/web/NotFound/NotFound";
+import { Dashboard } from '../layouts/Dashboard/Dashboard';
+import { StudentsList } from '../pages/admin/StudentsList/StudentsList';
+import { StudentsRegister } from '../pages/admin/StudentsRegister/StudentsRegister';
+
 const AdminRoutes = [
-    {path: '/admin', component: Admin, layout: LayoutGenreal},
-    {path: '/admin/sign-in', component: SignIn,layout: LayoutGenreal}
+    {path: '/admin', component: Admin, layout: Dashboard},
+    {path: '/admin/admin-register', component: AdminRegister,layout: LayoutGeneral},
+    {path: '/admin/students', component: StudentsList,layout: Dashboard},
+    {path: '/admin/students-register', component: StudentsRegister,layout:  Dashboard}
+
+
+
 ];
 const GeneralRoutes = [
-    {path: '/',component: Home,layout: LayoutGenreal},
-    {path: '/contact',component: Contact,layout: LayoutGenreal},
-    {path: '*',component: NotFound,layout: LayoutGenreal}
+    {path: '/',component: Login,layout: LayoutGeneral},
+    {path: '*',component: NotFound,layout: LayoutGeneral},
+    {path: 'change-password',component: ChangePassword,layout: LayoutGeneral},
+    {path: 'f-evolution',component: Fevolution,layout: LayoutMenu}
+
 ];
 
 const allRoutesProject = [...AdminRoutes,...GeneralRoutes];

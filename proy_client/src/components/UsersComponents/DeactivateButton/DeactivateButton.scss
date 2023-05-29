@@ -1,0 +1,26 @@
+@import '../../../scss/variables';
+
+.DeactivateButton{
+    background-color: red;
+    font-family: BonnetGrotesqueNr-Regular;
+    color: black;
+    height: 50px;
+    width: 90px;
+    font-size: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: black;
+    border-width: 2px;
+    box-shadow: 0 2px 0 rgb(100, 100, 100);
+    ::after{
+
+        background-color: black;
+    }
+    :not(:disabled){
+        :hover{
+            background-color: black;
+        }
+        
+    }
+}
